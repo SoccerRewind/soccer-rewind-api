@@ -199,7 +199,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(inputTeam: <a href="../classes/InputTeamDto.html">InputTeamDto</a>)</code>
+                    <code>create(inputTeam: <a href="../classes/InputTeamDto.html">CreateTeamDto</a>)</code>
                 </td>
             </tr>
 
@@ -229,7 +229,7 @@
                                 <tr>
                                     <td>inputTeam</td>
                                     <td>
-                                                <code><a href="../classes/InputTeamDto.html" target="_self" >InputTeamDto</a></code>
+                                                <code><a href="../classes/InputTeamDto.html" target="_self" >CreateTeamDto</a></code>
                                     </td>
 
                                     <td>
@@ -345,7 +345,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>generateUniqueID(team: <a href="../classes/InputTeamDto.html">InputTeamDto</a>)</code>
+                    <code>generateUniqueID(team: <a href="../classes/InputTeamDto.html">CreateTeamDto</a>)</code>
                 </td>
             </tr>
 
@@ -375,7 +375,7 @@
                                 <tr>
                                     <td>team</td>
                                     <td>
-                                                <code><a href="../classes/InputTeamDto.html" target="_self" >InputTeamDto</a></code>
+                                                <code><a href="../classes/InputTeamDto.html" target="_self" >CreateTeamDto</a></code>
                                     </td>
 
                                     <td>
@@ -756,7 +756,7 @@
 import { TeamModel } from &#x27;./team.model&#x27;;
 import { InjectModel } from &#x27;nestjs-typegoose&#x27;;
 import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
-import { InputTeamDto } from &#x27;./dto/input-team.dto&#x27;;
+import { CreateTeamDto } from &#x27;./dto/input-team.dto&#x27;;
 import { TeamDto } from &#x27;./dto/team.dto&#x27;;
 import { UpdateTeamDto } from &#x27;./dto/update-team.dto&#x27;;
 
@@ -772,7 +772,7 @@ export class TeamsService {
     return teams.map(team &#x3D;&gt; TeamsService.mapTeamModelToDTO(team));
   }
 
-  public async create(inputTeam: InputTeamDto): Promise&lt;TeamDto&gt; {
+  public async create(inputTeam: CreateTeamDto): Promise&lt;TeamDto&gt; {
     const uniqueId &#x3D; TeamsService.generateUniqueID(inputTeam);
     if (await this.isExist(uniqueId)) {
       throw new BadRequestException(&#x60;Team with id: ${uniqueId} is already exist&#x60;)
@@ -832,7 +832,7 @@ export class TeamsService {
     return !!team;
   }
 
-  private static generateUniqueID(team: InputTeamDto) {
+  private static generateUniqueID(team: CreateTeamDto) {
     return team.name.toLowerCase().replace(/ /g, &#x27;_&#x27;);
   }
 }

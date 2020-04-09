@@ -141,7 +141,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(team: <a href="../classes/InputTeamDto.html">InputTeamDto</a>)</code>
+                    <code>create(team: <a href="../classes/InputTeamDto.html">CreateTeamDto</a>)</code>
                 </td>
             </tr>
 
@@ -178,7 +178,7 @@
                                 <tr>
                                     <td>team</td>
                                     <td>
-                                                <code><a href="../classes/InputTeamDto.html" target="_self" >InputTeamDto</a></code>
+                                                <code><a href="../classes/InputTeamDto.html" target="_self" >CreateTeamDto</a></code>
                                     </td>
 
                                     <td>
@@ -510,7 +510,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Delete, Get, Param, Patch, Post } from &#x27;@nestjs/common&#x27;;
 import { TeamsService } from &#x27;./teams.service&#x27;;
-import { InputTeamDto } from &#x27;./dto/input-team.dto&#x27;;
+import { CreateTeamDto } from &#x27;./dto/input-team.dto&#x27;;
 import { TeamDto } from &#x27;./dto/team.dto&#x27;;
 import { UpdateTeamDto } from &#x27;./dto/update-team.dto&#x27;;
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
@@ -546,7 +546,7 @@ export class TeamsController {
     description: &#x27;Team created successfully&#x27;,
     type: TeamDto
   })
-  public async create(@Body() team: InputTeamDto): Promise&lt;TeamDto&gt; {
+  public async create(@Body() team: CreateTeamDto): Promise&lt;TeamDto&gt; {
     return this.teamService.create(team);
   }
 

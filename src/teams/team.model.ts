@@ -1,10 +1,7 @@
 import { prop } from '@typegoose/typegoose';
-import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
+import { BaseModel } from '../shared/base.model';
 
-export class TeamModel extends TimeStamps {
-  @prop({ required: true })
-  public _id: string;
-
+export class TeamModel extends BaseModel {
   @prop({ required: true })
   public name: string;
 

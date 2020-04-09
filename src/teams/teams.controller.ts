@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { TeamsService } from './teams.service';
-import { InputTeamDto } from './dto/input-team.dto';
+import { CreateTeamDto } from './dto/create-team.dto';
 import { TeamDto } from './dto/team.dto';
-import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { UpdateTeamDto } from './dto/update-team.dto';
 
 @ApiTags('Teams')
 @Controller('teams')
@@ -36,7 +36,7 @@ export class TeamsController {
     description: 'Team created successfully',
     type: TeamDto
   })
-  public async create(@Body() team: InputTeamDto): Promise<TeamDto> {
+  public async create(@Body() team: CreateTeamDto): Promise<TeamDto> {
     return this.teamService.create(team);
   }
 

@@ -1,43 +1,44 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { TeamModel } from './team.model';
-import { InjectModel } from 'nestjs-typegoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { InputTeamDto } from './dto/input-team.dto';
+import { CreateTeamDto } from './dto/create-team.dto';
 import { TeamDto } from './dto/team.dto';
+import { BaseService } from '../shared/base.service';
 import { UpdateTeamDto } from './dto/update-team.dto';
 
 @Injectable()
-export class TeamsService {
+export class TeamsService extends BaseService<TeamModel> {
   constructor(
-    @InjectModel(TeamModel) private readonly teamModel: ReturnModelType<typeof TeamModel>
+    @InjectModel(TeamModel.modelName) private readonly teamModel: ReturnModelType<typeof TeamModel>
   ) {
+    super(teamModel);
   }
 
-  public async getAll(): Promise<TeamDto[]> {
-    const teams: TeamModel[] = await this.teamModel.find();
-    console.log(teams);
+  public async getAll(): Promise<any[]> {
+    const teams: TeamModel[] = await this._findAllAsync();
     return teams.map(team => TeamsService.mapTeamModelToDTO(team));
   }
 
-  public async create(inputTeam: InputTeamDto): Promise<TeamDto> {
+  public async create(inputTeam: CreateTeamDto): Promise<TeamDto> {
     const uniqueId = TeamsService.generateUniqueID(inputTeam);
     if (await this.isExist(uniqueId)) {
       throw new BadRequestException(`Team with id: ${uniqueId} is already exist`)
     }
 
-    const created = new this.teamModel(inputTeam);
-    created._id = uniqueId;
-    console.log(created);
+    const newTeam = this._createModel(inputTeam);
+    newTeam._id = uniqueId;
+
     try {
-      await created.save();
-      return TeamsService.mapTeamModelToDTO(created);
+      await this._create(newTeam);
+      return TeamsService.mapTeamModelToDTO(newTeam);
     } catch (e) {
       throw e;
     }
   }
 
   public async getById(id: string): Promise<TeamDto> {
-    const team: TeamModel = await this.teamModel.findById(id);
+    const team: TeamModel = await this._findByIdAsync(id);
     if (team) {
       return TeamsService.mapTeamModelToDTO(team);
     } else {
@@ -50,8 +51,8 @@ export class TeamsService {
       throw new NotFoundException(`Team with id: ${id} does not exist`);
     }
 
-    await this.teamModel.findByIdAndUpdate(id, updateTeam);
-    const team: TeamModel = await this.teamModel.findById(id);
+    await this._updateAsync(id, updateTeam);
+    const team: TeamModel = await this._findByIdAsync(id);
     return TeamsService.mapTeamModelToDTO(team);
   }
 
@@ -60,8 +61,8 @@ export class TeamsService {
       throw new NotFoundException(`Team with id: ${id} does not exist`);
     }
 
-    const team: TeamModel = await this.teamModel.findById(id);
-    await this.teamModel.findByIdAndDelete(id);
+    const team: TeamModel = await this._findByIdAsync(id);
+    await this._deleteByIdAsync(id);
     return TeamsService.mapTeamModelToDTO(team);
   }
 
@@ -75,11 +76,11 @@ export class TeamsService {
   }
 
   private async isExist(id: string): Promise<boolean> {
-    const team: TeamModel = await this.teamModel.findById(id);
+    const team: TeamModel = await this._findByIdAsync(id);
     return !!team;
   }
 
-  private static generateUniqueID(team: InputTeamDto) {
+  private static generateUniqueID(team: CreateTeamDto) {
     return team.name.toLowerCase().replace(/ /g, '_');
   }
 }

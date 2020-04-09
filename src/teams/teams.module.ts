@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TeamsController } from './teams.controller';
 import { TeamsService } from './teams.service';
-import { TypegooseModule } from 'nestjs-typegoose';
+import { MongooseModule } from '@nestjs/mongoose';
 import { TeamModel } from './team.model';
 
 @Module({
-  imports: [TypegooseModule.forFeature([TeamModel])],
+  imports: [
+    MongooseModule.forFeature([
+      { name: TeamModel.modelName, schema: TeamModel.schema }
+    ])
+  ],
   controllers: [TeamsController],
   providers: [TeamsService]
 })
