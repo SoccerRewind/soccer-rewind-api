@@ -123,4 +123,8 @@ export abstract class BaseService<T extends BaseModel> {
       BaseService.throwMongoError(e);
     }
   }
+
+  protected async _isExist(id: string): Promise<boolean> {
+    return !!(await this._findByIdAsync(id));
+  }
 }

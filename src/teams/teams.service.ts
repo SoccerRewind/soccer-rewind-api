@@ -22,7 +22,7 @@ export class TeamsService extends BaseService<TeamModel> {
 
   public async create(inputTeam: CreateTeamDto): Promise<TeamDto> {
     const uniqueId = TeamsService.generateUniqueID(inputTeam);
-    if (await this.isExist(uniqueId)) {
+    if (await this._isExist(uniqueId)) {
       throw new BadRequestException(`Team with id: ${uniqueId} is already exist`)
     }
 
@@ -47,7 +47,7 @@ export class TeamsService extends BaseService<TeamModel> {
   }
 
   public async update(id: string, updateTeam: UpdateTeamDto): Promise<TeamDto> {
-    if (!(await this.isExist(id))) {
+    if (!(await this._isExist(id))) {
       throw new NotFoundException(`Team with id: ${id} does not exist`);
     }
 
@@ -57,7 +57,7 @@ export class TeamsService extends BaseService<TeamModel> {
   }
 
   public async delete(id: string): Promise<TeamDto> {
-    if (!(await this.isExist(id))) {
+    if (!(await this._isExist(id))) {
       throw new NotFoundException(`Team with id: ${id} does not exist`);
     }
 
@@ -73,11 +73,6 @@ export class TeamsService extends BaseService<TeamModel> {
       country: team.country,
       logo: team.logo,
     };
-  }
-
-  private async isExist(id: string): Promise<boolean> {
-    const team: TeamModel = await this._findByIdAsync(id);
-    return !!team;
   }
 
   private static generateUniqueID(team: CreateTeamDto) {
