@@ -36,7 +36,7 @@
 
 <ol class="breadcrumb">
   <li>Controllers</li>
-  <li>TeamsController</li>
+  <li>PlayersController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,14 +54,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/teams/teams.controller.ts</code>
+            <code>src/players/players.controller.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Prefix</h3>
             </p>
             <p class="comment">
-                <code>teams</code>
+                <code>players</code>
             </p>
 
 
@@ -89,17 +89,7 @@
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#delete">delete</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
                                 <a href="#getAll">getAll</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#getById">getById</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -141,7 +131,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(team: <a href="../classes/CreateTeamDto.html">CreateTeamDto</a>)</code>
+                    <code>create(player: <a href="../classes/CreatePlayerDto.html">CreatePlayerDto</a>)</code>
                 </td>
             </tr>
 
@@ -149,14 +139,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiCreatedResponse({description: &#x27;Team created successfully&#x27;, type: TeamDto})<br /></code>
+                    <code>@Post()<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/teams/teams.controller.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/players/players.controller.ts:19</a></div>
                 </td>
             </tr>
 
@@ -176,9 +166,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>team</td>
+                                    <td>player</td>
                                     <td>
-                                                <code><a href="../classes/CreateTeamDto.html" target="_self" >CreateTeamDto</a></code>
+                                                <code><a href="../classes/CreatePlayerDto.html" target="_self" >CreatePlayerDto</a></code>
                                     </td>
 
                                     <td>
@@ -193,87 +183,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="delete"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                            delete
-                        </b>
-                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOkResponse({description: &#x27;Return deleted team&#x27;, type: TeamDto})<br />@ApiNotFoundResponse({description: &#x27;Team does not exist&#x27;})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/teams/teams.controller.ts:63</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >Promise&lt;PlayerDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -309,63 +219,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br />@ApiOkResponse({description: &#x27;Return all teams from database&#x27;, type: undefined})<br /></code>
+                    <code>@Get()<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/teams/teams.controller.ts:18</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto[]&gt;</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getById"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                            getById
-                        </b>
-                        <a href="#getById"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;:id&#x27;)<br />@ApiOkResponse({description: &#x27;Return specific team&#x27;, type: TeamDto})<br />@ApiNotFoundResponse({description: &#x27;Team does not exist&#x27;})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/teams/teams.controller.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/players/players.controller.ts:14</a></div>
                 </td>
             </tr>
 
@@ -374,39 +235,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >Promise&lt;PlayerDto[]&gt;</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -430,7 +260,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, team: <a href="../classes/UpdateTeamDto.html">UpdateTeamDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, player: <a href="../classes/UpdatePlayerDto.html">UpdatePlayerDto</a>)</code>
                 </td>
             </tr>
 
@@ -438,14 +268,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br />@ApiOkResponse({description: &#x27;Return updated team&#x27;, type: TeamDto})<br />@ApiNotFoundResponse({description: &#x27;Team does not exist&#x27;})<br /></code>
+                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/teams/teams.controller.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/players/players.controller.ts:24</a></div>
                 </td>
             </tr>
 
@@ -477,9 +307,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>team</td>
+                                    <td>player</td>
                                     <td>
-                                                <code><a href="../classes/UpdateTeamDto.html" target="_self" >UpdateTeamDto</a></code>
+                                                <code><a href="../classes/UpdatePlayerDto.html" target="_self" >UpdatePlayerDto</a></code>
                                     </td>
 
                                     <td>
@@ -494,7 +324,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >Promise&lt;PlayerDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -508,70 +338,31 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from &#x27;@nestjs/common&#x27;;
-import { TeamsService } from &#x27;./teams.service&#x27;;
-import { CreateTeamDto } from &#x27;./dto/create-team.dto&#x27;;
-import { TeamDto } from &#x27;./dto/team.dto&#x27;;
-import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { UpdateTeamDto } from &#x27;./dto/update-team.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Get, Param, Patch, Post } from &#x27;@nestjs/common&#x27;;
+import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { PlayersService } from &#x27;./players.service&#x27;;
+import { CreatePlayerDto } from &#x27;./dto/create-player.dto&#x27;;
+import { PlayerDto } from &#x27;./dto/player.dto&#x27;;
+import { UpdatePlayerDto } from &#x27;./dto/update-player.dto&#x27;;
 
-@ApiTags(&#x27;Teams&#x27;)
-@Controller(&#x27;teams&#x27;)
-export class TeamsController {
-  constructor(private teamService: TeamsService) { }
+@ApiTags(&#x27;Players&#x27;)
+@Controller(&#x27;players&#x27;)
+export class PlayersController {
+  constructor(private playerService: PlayersService) { }
 
   @Get()
-  @ApiOkResponse({
-    description: &#x27;Return all teams from database&#x27;,
-    type: [TeamDto]
-  })
-  public async getAll(): Promise&lt;TeamDto[]&gt; {
-    return this.teamService.getAll();
-  }
-
-  @Get(&#x27;:id&#x27;)
-  @ApiOkResponse({
-    description: &#x27;Return specific team&#x27;,
-    type: TeamDto
-  })
-  @ApiNotFoundResponse({
-    description: &#x27;Team does not exist&#x27;
-  })
-  public async getById(@Param(&#x27;id&#x27;) id: string): Promise&lt;TeamDto&gt; {
-    return this.teamService.getById(id);
+  public async getAll(): Promise&lt;PlayerDto[]&gt; {
+    return this.playerService.getAll();
   }
 
   @Post()
-  @ApiCreatedResponse({
-    description: &#x27;Team created successfully&#x27;,
-    type: TeamDto
-  })
-  public async create(@Body() team: CreateTeamDto): Promise&lt;TeamDto&gt; {
-    return this.teamService.create(team);
+  public async create(@Body() player: CreatePlayerDto): Promise&lt;PlayerDto&gt; {
+    return this.playerService.create(player);
   }
 
   @Patch(&#x27;:id&#x27;)
-  @ApiOkResponse({
-    description: &#x27;Return updated team&#x27;,
-    type: TeamDto
-  })
-  @ApiNotFoundResponse({
-    description: &#x27;Team does not exist&#x27;
-  })
-  public async update(@Param(&#x27;id&#x27;) id: string, @Body() team: UpdateTeamDto): Promise&lt;TeamDto&gt; {
-    return this.teamService.update(id, team)
-  }
-
-  @Delete(&#x27;:id&#x27;)
-  @ApiOkResponse({
-    description: &#x27;Return deleted team&#x27;,
-    type: TeamDto
-  })
-  @ApiNotFoundResponse({
-    description: &#x27;Team does not exist&#x27;
-  })
-  public async delete(@Param(&#x27;id&#x27;) id: string): Promise&lt;TeamDto&gt; {
-    return this.teamService.delete(id);
+  public async update(@Param(&#x27;id&#x27;) id: string, @Body() player: UpdatePlayerDto): Promise&lt;PlayerDto&gt; {
+    return this.playerService.update(id, player);
   }
 }
 </code></pre>
@@ -608,7 +399,7 @@ export class TeamsController {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'TeamsController.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PlayersController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

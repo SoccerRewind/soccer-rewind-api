@@ -55,16 +55,53 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link">AppModule</a>
                             </li>
                             <li class="link">
-                                <a href="modules/TeamsModule.html" data-type="entity-link">TeamsModule</a>
+                                <a href="modules/PlayersModule.html" data-type="entity-link">PlayersModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' : 'data-target="#xs-controllers-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' }>
+                                            'data-target="#controllers-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' : 'data-target="#xs-controllers-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' :
-                                            'id="xs-controllers-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' :
+                                            'id="xs-controllers-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' }>
+                                            <li class="link">
+                                                <a href="controllers/PlayersController.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">PlayersController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#injectables-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' : 'data-target="#xs-injectables-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' :
+                                        'id="xs-injectables-links-module-PlayersModule-049e6f83cb9827db31060ec812c85c0d"' }>
+                                        <li class="link">
+                                            <a href="injectables/PlayersService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>PlayersService</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="injectables/TeamsService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>TeamsService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/TeamsModule.html" data-type="entity-link">TeamsModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#controllers-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' : 'data-target="#xs-controllers-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' :
+                                            'id="xs-controllers-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' }>
                                             <li class="link">
                                                 <a href="controllers/TeamsController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">TeamsController</a>
@@ -73,13 +110,17 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' : 'data-target="#xs-injectables-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' }>
+                                        'data-target="#injectables-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' : 'data-target="#xs-injectables-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' :
-                                        'id="xs-injectables-links-module-TeamsModule-bf7fdbb71b9b74106c7199b8bce931d8"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' :
+                                        'id="xs-injectables-links-module-TeamsModule-3e8df61c3f2e95ce5b0e374c86741fda"' }>
+                                        <li class="link">
+                                            <a href="injectables/PlayersService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>PlayersService</a>
+                                        </li>
                                         <li class="link">
                                             <a href="injectables/TeamsService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>TeamsService</a>
@@ -97,6 +138,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="controllers-links"' : 'id="xs-controllers-links"' }>
+                                <li class="link">
+                                    <a href="controllers/PlayersController.html" data-type="entity-link">PlayersController</a>
+                                </li>
                                 <li class="link">
                                     <a href="controllers/TeamsController.html" data-type="entity-link">TeamsController</a>
                                 </li>
@@ -117,13 +161,25 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/BaseService.html" data-type="entity-link">BaseService</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CreatePlayerDto.html" data-type="entity-link">CreatePlayerDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/CreateTeamDto.html" data-type="entity-link">CreateTeamDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/PlayerDto.html" data-type="entity-link">PlayerDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/PlayerModel.html" data-type="entity-link">PlayerModel</a>
                             </li>
                             <li class="link">
                                 <a href="classes/TeamDto.html" data-type="entity-link">TeamDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/TeamModel.html" data-type="entity-link">TeamModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdatePlayerDto.html" data-type="entity-link">UpdatePlayerDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/UpdateTeamDto.html" data-type="entity-link">UpdateTeamDto</a>
@@ -139,23 +195,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
+                                    <a href="injectables/PlayersService.html" data-type="entity-link">PlayersService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/TeamsService.html" data-type="entity-link">TeamsService</a>
                                 </li>
                             </ul>
                         </li>
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
-                            'data-target="#xs-interfaces-links"' }>
-                            <span class="icon ion-md-information-circle-outline"></span>
-                            <span>Interfaces</span>
-                            <span class="icon ion-ios-arrow-down"></span>
-                        </div>
-                        <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
-                            <li class="link">
-                                <a href="interfaces/IRepository.html" data-type="entity-link">IRepository</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#miscellaneous-links"'
                             : 'data-target="#xs-miscellaneous-links"' }>

@@ -22,29 +22,41 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_AppModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="184,-70 184,-195 312,-195 312,-70 184,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="124.5,-70 124.5,-195 371.5,-195 371.5,-70 124.5,-70"/>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_AppModule_imports</title>
-<polygon fill="none" stroke="#000000" points="192,-78 192,-130 304,-130 304,-78 192,-78"/>
+<polygon fill="none" stroke="#000000" points="132.5,-78 132.5,-130 363.5,-130 363.5,-78 132.5,-78"/>
 </g>
-<!-- TeamsModule -->
+<!-- PlayersModule -->
 <g id="node1" class="node">
-<title>TeamsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="296.3669,-122 293.3669,-126 272.3669,-126 269.3669,-122 199.6331,-122 199.6331,-86 296.3669,-86 296.3669,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsModule</text>
+<title>PlayersModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="355.7577,-122 352.7577,-126 331.7577,-126 328.7577,-122 255.2423,-122 255.2423,-86 355.7577,-86 355.7577,-122"/>
+<text text-anchor="middle" x="305.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PlayersModule</text>
 </g>
 <!-- AppModule -->
-<g id="node2" class="node">
+<g id="node3" class="node">
 <title>AppModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="289.6571,-187 286.6571,-191 265.6571,-191 262.6571,-187 206.3429,-187 206.3429,-151 289.6571,-151 289.6571,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="288.1571,-187 285.1571,-191 264.1571,-191 261.1571,-187 204.8429,-187 204.8429,-151 288.1571,-151 288.1571,-187"/>
+<text text-anchor="middle" x="246.5" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
+</g>
+<!-- PlayersModule&#45;&gt;AppModule -->
+<g id="edge1" class="edge">
+<title>PlayersModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M271.7247,-122.1061C271.7247,-122.1061 271.7247,-140.991 271.7247,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="268.2248,-140.9909 271.7247,-150.991 275.2248,-140.991 268.2248,-140.9909"/>
+</g>
+<!-- TeamsModule -->
+<g id="node2" class="node">
+<title>TeamsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="236.8669,-122 233.8669,-126 212.8669,-126 209.8669,-122 140.1331,-122 140.1331,-86 236.8669,-86 236.8669,-122"/>
+<text text-anchor="middle" x="188.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsModule</text>
 </g>
 <!-- TeamsModule&#45;&gt;AppModule -->
-<g id="edge1" class="edge">
+<g id="edge2" class="edge">
 <title>TeamsModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M220.8026,-122.1061C220.8026,-122.1061 220.8026,-140.991 220.8026,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="217.3027,-140.9909 220.8026,-150.991 224.3027,-140.991 217.3027,-140.9909"/>
 </g>
 </g>
 </svg>

@@ -61,49 +61,85 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_AppModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="184,-146 184,-271 312,-271 312,-146 184,-146"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="124,-146 124,-271 371,-271 371,-146 124,-146"/>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_AppModule_imports</title>
-<polygon fill="none" stroke="#000000" points="192,-154 192,-206 304,-206 304,-154 192,-154"/>
+<polygon fill="none" stroke="#000000" points="132,-154 132,-206 363,-206 363,-154 132,-154"/>
 </g>
 <g id="clust7" class="cluster">
-<title>cluster_TeamsModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="166,-70 166,-138 330,-138 330,-70 166,-70"/>
+<title>cluster_PlayersModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="89,-70 89,-138 407,-138 407,-70 89,-70"/>
 </g>
 <g id="clust12" class="cluster">
-<title>cluster_TeamsModule_providers</title>
-<polygon fill="none" stroke="#000000" points="174,-78 174,-130 322,-130 322,-78 174,-78"/>
+<title>cluster_PlayersModule_providers</title>
+<polygon fill="none" stroke="#000000" points="97,-78 97,-130 399,-130 399,-78 97,-78"/>
 </g>
-<!-- TeamsModule -->
+<!-- PlayersModule -->
 <g id="node1" class="node">
-<title>TeamsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="296.3669,-198 293.3669,-202 272.3669,-202 269.3669,-198 199.6331,-198 199.6331,-162 296.3669,-162 296.3669,-198"/>
-<text text-anchor="middle" x="248" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsModule</text>
+<title>PlayersModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="355.2577,-198 352.2577,-202 331.2577,-202 328.2577,-198 254.7423,-198 254.7423,-162 355.2577,-162 355.2577,-198"/>
+<text text-anchor="middle" x="305" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">PlayersModule</text>
 </g>
 <!-- AppModule -->
-<g id="node2" class="node">
+<g id="node3" class="node">
 <title>AppModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="289.6571,-263 286.6571,-267 265.6571,-267 262.6571,-263 206.3429,-263 206.3429,-227 289.6571,-227 289.6571,-263"/>
-<text text-anchor="middle" x="248" y="-240.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="287.6571,-263 284.6571,-267 263.6571,-267 260.6571,-263 204.3429,-263 204.3429,-227 287.6571,-227 287.6571,-263"/>
+<text text-anchor="middle" x="246" y="-240.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
+</g>
+<!-- PlayersModule&#45;&gt;AppModule -->
+<g id="edge1" class="edge">
+<title>PlayersModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M271.2247,-198.1061C271.2247,-198.1061 271.2247,-216.991 271.2247,-216.991"/>
+<polygon fill="#000000" stroke="#000000" points="267.7248,-216.9909 271.2247,-226.991 274.7248,-216.991 267.7248,-216.9909"/>
+</g>
+<!-- TeamsModule -->
+<g id="node2" class="node">
+<title>TeamsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="236.3669,-198 233.3669,-202 212.3669,-202 209.3669,-198 139.6331,-198 139.6331,-162 236.3669,-162 236.3669,-198"/>
+<text text-anchor="middle" x="188" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsModule</text>
 </g>
 <!-- TeamsModule&#45;&gt;AppModule -->
-<g id="edge1" class="edge">
+<g id="edge2" class="edge">
 <title>TeamsModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M248,-198.1061C248,-198.1061 248,-216.991 248,-216.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-216.9909 248,-226.991 251.5001,-216.991 244.5001,-216.9909"/>
+<path fill="none" stroke="#000000" d="M220.3026,-198.1061C220.3026,-198.1061 220.3026,-216.991 220.3026,-216.991"/>
+<polygon fill="#000000" stroke="#000000" points="216.8027,-216.9909 220.3026,-226.991 223.8027,-216.991 216.8027,-216.9909"/>
+</g>
+<!-- PlayersService -->
+<g id="node4" class="node">
+<title>PlayersService</title>
+<ellipse fill="#fdb462" stroke="#000000" cx="323" cy="-104" rx="68.3324" ry="18"/>
+<text text-anchor="middle" x="323" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PlayersService</text>
+</g>
+<!-- PlayersService&#45;&gt;PlayersModule -->
+<g id="edge3" class="edge">
+<title>PlayersService&#45;&gt;PlayersModule</title>
+<path fill="none" stroke="#000000" d="M305,-121.627C305,-121.627 305,-151.9409 305,-151.9409"/>
+<polygon fill="#000000" stroke="#000000" points="301.5001,-151.9408 305,-161.9409 308.5001,-151.9409 301.5001,-151.9408"/>
+</g>
+<!-- PlayersService&#45;&gt;TeamsModule -->
+<g id="edge5" class="edge">
+<title>PlayersService&#45;&gt;TeamsModule</title>
+<path fill="none" stroke="#000000" d="M258.1689,-110C249.0361,-110 242.6829,-110 242.6829,-110 242.6829,-110 242.6829,-174 242.6829,-174 242.6829,-174 242.0557,-174 242.0557,-174"/>
+<polygon fill="#000000" stroke="#000000" points="246.4102,-170.5002 236.4101,-174 246.41,-177.5002 246.4102,-170.5002"/>
 </g>
 <!-- TeamsService -->
-<g id="node3" class="node">
+<g id="node5" class="node">
 <title>TeamsService</title>
-<ellipse fill="#fdb462" stroke="#000000" cx="248" cy="-104" rx="65.9658" ry="18"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsService</text>
+<ellipse fill="#fdb462" stroke="#000000" cx="171" cy="-104" rx="65.9658" ry="18"/>
+<text text-anchor="middle" x="171" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsService</text>
+</g>
+<!-- TeamsService&#45;&gt;PlayersModule -->
+<g id="edge4" class="edge">
+<title>TeamsService&#45;&gt;PlayersModule</title>
+<path fill="none" stroke="#000000" d="M233.2955,-98C242.3207,-98 248.6334,-98 248.6334,-98 248.6334,-98 248.6334,-186 248.6334,-186 248.6334,-186 249.2366,-186 249.2366,-186"/>
+<polygon fill="#000000" stroke="#000000" points="244.6657,-189.5002 254.6656,-186 244.6655,-182.5002 244.6657,-189.5002"/>
 </g>
 <!-- TeamsService&#45;&gt;TeamsModule -->
-<g id="edge2" class="edge">
+<g id="edge6" class="edge">
 <title>TeamsService&#45;&gt;TeamsModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.0109C248,-122.0109 248,-151.855 248,-151.855"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-151.8549 248,-161.855 251.5001,-151.855 244.5001,-151.8549"/>
+<path fill="none" stroke="#000000" d="M188,-121.627C188,-121.627 188,-151.9409 188,-151.9409"/>
+<polygon fill="#000000" stroke="#000000" points="184.5001,-151.9408 188,-161.9409 191.5001,-151.9409 184.5001,-151.9408"/>
 </g>
 </g>
 </svg>
@@ -124,7 +160,7 @@
                 <div class="card-block">
                     <h4 class="card-title"><span class="icon ion-ios-archive"></span></h4>
                     <p class="card-text">
-                        <a href="./modules.html">2 Modules</a>
+                        <a href="./modules.html">3 Modules</a>
                     </p>
                 </div>
             </div>
@@ -133,7 +169,7 @@
             <div class="card text-center">
                 <div class="card-block">
                     <h4 class="card-title"><span class="icon ion-md-swap"></span></h4>
-                    <p class="card-text">1 Controller</p>
+                    <p class="card-text">2 Controllers</p>
                 </div>
             </div>
         </div>
@@ -141,7 +177,7 @@
             <div class="card text-center">
                 <div class="card-block">
                     <h4 class="card-title"><span class="icon ion-md-arrow-round-down"></span></h4>
-                    <p class="card-text">1 Injectable</p>
+                    <p class="card-text">2 Injectables</p>
                 </div>
             </div>
         </div>
@@ -149,15 +185,7 @@
             <div class="card text-center">
                 <div class="card-block">
                     <h4 class="card-title"><span class="icon ion-ios-paper"></span></h4>
-                    <p class="card-text">6 Classes</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card text-center">
-                <div class="card-block">
-                    <h4 class="card-title"><span class="icon ion-md-information-circle-outline"></span></h4>
-                    <p class="card-text">1 Interface</p>
+                    <p class="card-text">10 Classes</p>
                 </div>
             </div>
         </div>

@@ -21,11 +21,11 @@
 <polygon fill="#fb8072" stroke="transparent" points="406,-10 406,-30 426,-30 426,-10 406,-10"/>
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
-<title>cluster_TeamsModule</title>
+<title>cluster_PlayersModule</title>
 <polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="89,-70 89,-195 407,-195 407,-70 89,-70"/>
 </g>
 <g id="clust6" class="cluster">
-<title>cluster_TeamsModule_providers</title>
+<title>cluster_PlayersModule_providers</title>
 <polygon fill="none" stroke="#000000" points="97,-78 97,-130 399,-130 399,-78 97,-78"/>
 </g>
 <!-- PlayersService -->
@@ -34,17 +34,17 @@
 <ellipse fill="#fdb462" stroke="#000000" cx="323" cy="-104" rx="68.3324" ry="18"/>
 <text text-anchor="middle" x="323" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PlayersService</text>
 </g>
-<!-- TeamsModule -->
+<!-- PlayersModule -->
 <g id="node3" class="node">
-<title>TeamsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="295.3669,-187 292.3669,-191 271.3669,-191 268.3669,-187 198.6331,-187 198.6331,-151 295.3669,-151 295.3669,-187"/>
-<text text-anchor="middle" x="247" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsModule</text>
+<title>PlayersModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="297.2577,-187 294.2577,-191 273.2577,-191 270.2577,-187 196.7423,-187 196.7423,-151 297.2577,-151 297.2577,-187"/>
+<text text-anchor="middle" x="247" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">PlayersModule</text>
 </g>
-<!-- PlayersService&#45;&gt;TeamsModule -->
+<!-- PlayersService&#45;&gt;PlayersModule -->
 <g id="edge1" class="edge">
-<title>PlayersService&#45;&gt;TeamsModule</title>
-<path fill="none" stroke="#000000" d="M275.0086,-116.8419C275.0086,-116.8419 275.0086,-140.5231 275.0086,-140.5231"/>
-<polygon fill="#000000" stroke="#000000" points="271.5087,-140.523 275.0086,-150.5231 278.5087,-140.5231 271.5087,-140.523"/>
+<title>PlayersService&#45;&gt;PlayersModule</title>
+<path fill="none" stroke="#000000" d="M275.9813,-117.1537C275.9813,-117.1537 275.9813,-140.6938 275.9813,-140.6938"/>
+<polygon fill="#000000" stroke="#000000" points="272.4814,-140.6938 275.9813,-150.6938 279.4814,-140.6939 272.4814,-140.6938"/>
 </g>
 <!-- TeamsService -->
 <g id="node2" class="node">
@@ -52,11 +52,11 @@
 <ellipse fill="#fdb462" stroke="#000000" cx="171" cy="-104" rx="65.9658" ry="18"/>
 <text text-anchor="middle" x="171" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TeamsService</text>
 </g>
-<!-- TeamsService&#45;&gt;TeamsModule -->
+<!-- TeamsService&#45;&gt;PlayersModule -->
 <g id="edge2" class="edge">
-<title>TeamsService&#45;&gt;TeamsModule</title>
-<path fill="none" stroke="#000000" d="M217.6495,-116.8419C217.6495,-116.8419 217.6495,-140.5231 217.6495,-140.5231"/>
-<polygon fill="#000000" stroke="#000000" points="214.1496,-140.523 217.6495,-150.5231 221.1496,-140.5231 214.1496,-140.523"/>
+<title>TeamsService&#45;&gt;PlayersModule</title>
+<path fill="none" stroke="#000000" d="M216.6769,-117.1537C216.6769,-117.1537 216.6769,-140.6938 216.6769,-140.6938"/>
+<polygon fill="#000000" stroke="#000000" points="213.177,-140.6938 216.6769,-150.6938 220.177,-140.6939 213.177,-140.6938"/>
 </g>
 </g>
 </svg>

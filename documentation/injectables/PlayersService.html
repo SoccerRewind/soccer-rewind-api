@@ -38,7 +38,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>TeamsService</li>
+  <li>PlayersService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/teams/teams.service.ts</code>
+            <code>src/players/players.service.ts</code>
         </p>
 
 
@@ -102,11 +102,6 @@
                                 <a href="#create">create</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#delete">delete</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Static</span>
                                 <a href="#generateUniqueID">generateUniqueID</a>
@@ -117,14 +112,9 @@
                                 <a href="#getAll">getAll</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#getById">getById</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Static</span>
-                                <a href="#mapTeamModelToDTO">mapTeamModelToDTO</a>
+                                <a href="#mapPlayerModelToDTO">mapPlayerModelToDTO</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -240,12 +230,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(teamModel: ReturnModelType<>, playerService: <a href="../injectables/PlayersService.html">PlayersService</a>)</code>
+<code>constructor(playerModel: ReturnModelType<>, teamService: <a href="../injectables/TeamsService.html">TeamsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/teams/teams.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/players/players.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -263,7 +253,7 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>teamModel</td>
+                                                        <td>playerModel</td>
                                                   
                                                         <td>
                                                                     <code>ReturnModelType&lt;&gt;</code>
@@ -275,10 +265,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>playerService</td>
+                                                        <td>teamService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/PlayersService.html" target="_self" >PlayersService</a></code>
+                                                                        <code><a href="../injectables/TeamsService.html" target="_self" >TeamsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -318,88 +308,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(inputTeam: <a href="../classes/CreateTeamDto.html">CreateTeamDto</a>)</code>
+                    <code>create(inputPlayer: <a href="../classes/CreatePlayerDto.html">CreatePlayerDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/teams/teams.service.ts:25</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>inputTeam</td>
-                                    <td>
-                                                <code><a href="../classes/CreateTeamDto.html" target="_self" >CreateTeamDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="delete"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                            delete
-                        </b>
-                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/teams/teams.service.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/players/players.service.ts:29</a></div>
                 </td>
             </tr>
 
@@ -419,9 +336,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>inputPlayer</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="../classes/CreatePlayerDto.html" target="_self" >CreatePlayerDto</a></code>
                                     </td>
 
                                     <td>
@@ -436,7 +353,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >Promise&lt;PlayerDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -464,15 +381,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>generateUniqueID(team: <a href="../classes/CreateTeamDto.html">CreateTeamDto</a>)</code>
+                    <code>generateUniqueID(player: <a href="../classes/CreatePlayerDto.html">CreatePlayerDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">src/teams/teams.service.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/players/players.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -492,9 +409,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>team</td>
+                                    <td>player</td>
                                     <td>
-                                                <code><a href="../classes/CreateTeamDto.html" target="_self" >CreateTeamDto</a></code>
+                                                <code><a href="../classes/CreatePlayerDto.html" target="_self" >CreatePlayerDto</a></code>
                                     </td>
 
                                     <td>
@@ -544,8 +461,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/teams/teams.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/players/players.service.ts:21</a></div>
                 </td>
             </tr>
 
@@ -554,7 +471,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >Promise&lt;PlayerDto[]&gt;</a></code>
 
                     </div>
                 </td>
@@ -565,102 +482,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getById"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                            getById
-                        </b>
-                        <a href="#getById"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/teams/teams.service.ts:42</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="mapTeamModelToDTO"></a>
+                    <a name="mapPlayerModelToDTO"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Private</span>
                             <span class="modifier">Static</span>
-                            mapTeamModelToDTO
+                            mapPlayerModelToDTO
                         </b>
-                        <a href="#mapTeamModelToDTO"><span class="icon ion-ios-link"></span></a>
+                        <a href="#mapPlayerModelToDTO"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>mapTeamModelToDTO(team: <a href="../classes/TeamModel.html">TeamModel</a>)</code>
+                    <code>mapPlayerModelToDTO(player: <a href="../classes/PlayerModel.html">PlayerModel</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/teams/teams.service.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/players/players.service.ts:62</a></div>
                 </td>
             </tr>
 
@@ -680,9 +524,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>team</td>
+                                    <td>player</td>
                                     <td>
-                                                <code><a href="../classes/TeamModel.html" target="_self" >TeamModel</a></code>
+                                                <code><a href="../classes/PlayerModel.html" target="_self" >PlayerModel</a></code>
                                     </td>
 
                                     <td>
@@ -697,7 +541,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >TeamDto</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >PlayerDto</a></code>
 
                     </div>
                     <div class="io-description">
@@ -725,15 +569,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateTeam: <a href="../classes/UpdateTeamDto.html">UpdateTeamDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatePlayer: <a href="../classes/UpdatePlayerDto.html">UpdatePlayerDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/teams/teams.service.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/players/players.service.ts:53</a></div>
                 </td>
             </tr>
 
@@ -765,9 +609,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>updateTeam</td>
+                                    <td>updatePlayer</td>
                                     <td>
-                                                <code><a href="../classes/UpdateTeamDto.html" target="_self" >UpdateTeamDto</a></code>
+                                                <code><a href="../classes/UpdatePlayerDto.html" target="_self" >UpdatePlayerDto</a></code>
                                     </td>
 
                                     <td>
@@ -782,7 +626,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TeamDto.html" target="_self" >Promise&lt;TeamDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/PlayerDto.html" target="_self" >Promise&lt;PlayerDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -2502,91 +2346,86 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BadRequestException, forwardRef, Inject, Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { TeamModel } from &#x27;./team.model&#x27;;
-import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
-import { CreateTeamDto } from &#x27;./dto/create-team.dto&#x27;;
-import { TeamDto } from &#x27;./dto/team.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Inject, Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { BaseService } from &#x27;../shared/base.service&#x27;;
-import { UpdateTeamDto } from &#x27;./dto/update-team.dto&#x27;;
-import { PlayersService } from &#x27;../players/players.service&#x27;;
+import { PlayerModel } from &#x27;./player.model&#x27;;
+import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
+import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
+import { CreatePlayerDto } from &#x27;./dto/create-player.dto&#x27;;
+import { PlayerDto } from &#x27;./dto/player.dto&#x27;;
+import { TeamsService } from &#x27;../teams/teams.service&#x27;;
+import { TeamModel } from &#x27;../teams/team.model&#x27;;
+import { UpdatePlayerDto } from &#x27;./dto/update-player.dto&#x27;;
 
 @Injectable()
-export class TeamsService extends BaseService&lt;TeamModel&gt; {
+export class PlayersService extends BaseService&lt;PlayerModel&gt; {
   constructor(
-    @InjectModel(TeamModel.modelName) private readonly teamModel: ReturnModelType&lt;typeof TeamModel&gt;,
-    @Inject(forwardRef(() &#x3D;&gt; PlayersService)) private readonly playerService: PlayersService
+    @InjectModel(PlayerModel.modelName) private readonly playerModel: ReturnModelType&lt;typeof PlayerModel&gt;,
+    @Inject(forwardRef(() &#x3D;&gt; TeamsService)) private readonly teamService: TeamsService
   ) {
-    super(teamModel);
+    super(playerModel);
   }
 
-  public async getAll(): Promise&lt;any[]&gt; {
-    const teams: TeamModel[] &#x3D; await this._findAllAsync();
-    return teams.map(team &#x3D;&gt; TeamsService.mapTeamModelToDTO(team));
+  public async getAll(): Promise&lt;PlayerDto[]&gt; {
+    const players &#x3D; await this._findAll().populate(&#x27;teams&#x27;);
+
+    return players.map(player &#x3D;&gt; {
+      return PlayersService.mapPlayerModelToDTO(player)
+    });
   }
 
-  public async create(inputTeam: CreateTeamDto): Promise&lt;TeamDto&gt; {
-    const uniqueId &#x3D; TeamsService.generateUniqueID(inputTeam);
-    if (await this._isExist(uniqueId)) {
-      throw new BadRequestException(&#x60;Team with id: ${uniqueId} is already exist&#x60;)
+  public async create(inputPlayer: CreatePlayerDto): Promise&lt;PlayerDto&gt; {
+    if (!inputPlayer.name) {
+      inputPlayer.name &#x3D; &#x60;${inputPlayer.firstName} ${inputPlayer.lastName}&#x60;;
     }
 
-    const newTeam &#x3D; this._createModel(inputTeam);
-    newTeam._id &#x3D; uniqueId;
+    const newPlayer &#x3D; this._createModel(inputPlayer);
+    for (const teamId of inputPlayer.teamIds) {
+
+      const team &#x3D; await this.teamService._findByIdAsync(teamId);
+      if (team) {
+        newPlayer.teams.push(team);
+      }
+    }
+
+    newPlayer._id &#x3D; PlayersService.generateUniqueID(inputPlayer);
 
     try {
-      await this._create(newTeam);
-      return TeamsService.mapTeamModelToDTO(newTeam);
+      await this._create(newPlayer);
+      return PlayersService.mapPlayerModelToDTO(newPlayer);
     } catch (e) {
       throw e;
     }
   }
 
-  public async getById(id: string): Promise&lt;TeamDto&gt; {
-    const team: TeamModel &#x3D; await this._findByIdAsync(id);
-    if (team) {
-      return TeamsService.mapTeamModelToDTO(team);
-    } else {
-      throw new NotFoundException(&#x60;Team with id: ${id} does not exist&#x60;);
-    }
-  }
-
-  public async update(id: string, updateTeam: UpdateTeamDto): Promise&lt;TeamDto&gt; {
+  public async update(id: string, updatePlayer: UpdatePlayerDto): Promise&lt;PlayerDto&gt; {
     if (!(await this._isExist(id))) {
-      throw new NotFoundException(&#x60;Team with id: ${id} does not exist&#x60;);
+      throw new NotFoundException(&#x60;Player with id: ${id} does not exist&#x60;);
     }
-
-    await this._updateByIdAsync(id, updateTeam);
-    const team: TeamModel &#x3D; await this._findByIdAsync(id);
-    return TeamsService.mapTeamModelToDTO(team);
+    await this._updateById(id, updatePlayer);
+    const player: PlayerModel &#x3D; await this._findById(id).populate(&#x27;teams&#x27;);
+    return PlayersService.mapPlayerModelToDTO(player);
   }
 
-  public async delete(id: string): Promise&lt;TeamDto&gt; {
-    if (!(await this._isExist(id))) {
-      throw new NotFoundException(&#x60;Team with id: ${id} does not exist&#x60;);
-    }
-
-    const team: TeamModel &#x3D; await this._findByIdAsync(id);
-
-    await this._deleteById(id).then(async () &#x3D;&gt; {
-      await this.playerService._update({ teams: {$in: id} }, { $pullAll: {teams: [id]} });
-    });
-
-    return TeamsService.mapTeamModelToDTO(team);
-  }
-
-  private static mapTeamModelToDTO(team: TeamModel): TeamDto {
+  private static mapPlayerModelToDTO(player: PlayerModel): PlayerDto {
     return {
-      id: team._id,
-      name: team.name,
-      country: team.country,
-      logo: team.logo,
-    };
+      id: player._id,
+      firstName: player.firstName,
+      lastName: player.lastName,
+      name: player.name,
+      country: player.country,
+      face: player.face,
+      teams: (player.teams as TeamModel[]).map(team &#x3D;&gt; {
+        return {
+          id: team._id,
+          name: team.name
+        }
+      })
+    }
   }
 
-  private static generateUniqueID(team: CreateTeamDto) {
-    return team.name.toLowerCase().replace(/ /g, &#x27;_&#x27;);
+  private static generateUniqueID(player: CreatePlayerDto) {
+    return player.name.toLowerCase().replace(/ /g, &#x27;_&#x27;);
   }
 }
 </code></pre>
@@ -2622,7 +2461,7 @@ export class TeamsService extends BaseService&lt;TeamModel&gt; {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'TeamsService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PlayersService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
