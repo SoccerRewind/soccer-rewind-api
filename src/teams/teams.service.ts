@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { TeamModel } from './team.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { ReturnModelType } from '@typegoose/typegoose';
@@ -6,11 +6,13 @@ import { CreateTeamDto } from './dto/create-team.dto';
 import { TeamDto } from './dto/team.dto';
 import { BaseService } from '../shared/base.service';
 import { UpdateTeamDto } from './dto/update-team.dto';
+import { PlayersService } from '../players/players.service';
 
 @Injectable()
 export class TeamsService extends BaseService<TeamModel> {
   constructor(
-    @InjectModel(TeamModel.modelName) private readonly teamModel: ReturnModelType<typeof TeamModel>
+    @InjectModel(TeamModel.modelName) private readonly teamModel: ReturnModelType<typeof TeamModel>,
+    @Inject(forwardRef(() => PlayersService)) private readonly playerService: PlayersService
   ) {
     super(teamModel);
   }
@@ -51,7 +53,7 @@ export class TeamsService extends BaseService<TeamModel> {
       throw new NotFoundException(`Team with id: ${id} does not exist`);
     }
 
-    await this._updateAsync(id, updateTeam);
+    await this._updateByIdAsync(id, updateTeam);
     const team: TeamModel = await this._findByIdAsync(id);
     return TeamsService.mapTeamModelToDTO(team);
   }
@@ -62,7 +64,11 @@ export class TeamsService extends BaseService<TeamModel> {
     }
 
     const team: TeamModel = await this._findByIdAsync(id);
-    await this._deleteByIdAsync(id);
+
+    await this._deleteById(id).then(async () => {
+      await this.playerService._update({ teams: {$in: id} }, { $pullAll: {teams: [id]} });
+    });
+
     return TeamsService.mapTeamModelToDTO(team);
   }
 

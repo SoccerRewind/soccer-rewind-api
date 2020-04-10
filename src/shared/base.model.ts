@@ -13,6 +13,7 @@ export abstract class BaseModel {
 
   static get schema(): Schema {
     return buildSchema(this as any, {
+      id: false,
       timestamps: true,
       toJSON: {
         getters: true,

@@ -3,6 +3,7 @@ import { TeamsModule } from './teams/teams.module';
 import configuration from './config/configuration';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PlayersModule } from './players/players.module';
 
 @Module({
   imports: [
@@ -13,8 +14,9 @@ import { MongooseModule } from '@nestjs/mongoose';
       useNewUrlParser: true,
       useUnifiedTopology: true
     }),
-
-    TeamsModule],
+    TeamsModule,
+    PlayersModule
+  ],
   controllers: [],
   providers: [],
 })
