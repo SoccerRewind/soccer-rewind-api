@@ -1,5 +1,6 @@
 import { IsOptional, IsString, ValidateNested } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiModelPropertyOptional } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
 
 export class PlayerHistoryItem {
   @IsString()
@@ -39,6 +40,6 @@ export class CreatePlayerDto {
 
   @ValidateNested()
   @IsOptional()
-  @ApiPropertyOptional()
-  public history: PlayerHistoryItem[]
+  @ApiModelPropertyOptional({type: [PlayerHistoryItem]})
+  public history: PlayerHistoryItem[];
 }

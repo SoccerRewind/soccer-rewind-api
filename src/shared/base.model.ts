@@ -17,12 +17,12 @@ export abstract class BaseModel {
       timestamps: true,
       toJSON: {
         getters: true,
-        virtuals: true
-      }
-    })
+        virtuals: true,
+      },
+    });
   }
 
   static get modelName(): string {
-    return this.name
+    return this.name;
   }
 }

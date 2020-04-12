@@ -11,7 +11,8 @@ import { UpdatePlayerDto } from './dto/update-player.dto';
 @Injectable()
 export class PlayersService extends BaseService<PlayerModel> {
   constructor(
-    @InjectModel(PlayerModel.modelName) private readonly playerModel: ReturnModelType<typeof PlayerModel>
+    @InjectModel(PlayerModel.modelName)
+    private readonly playerModel: ReturnModelType<typeof PlayerModel>,
   ) {
     super(playerModel);
   }
@@ -19,7 +20,7 @@ export class PlayersService extends BaseService<PlayerModel> {
   public async getAll(): Promise<PlayerDto[]> {
     const players = await this._findAll().populate('history.team');
     return players.map(player => {
-      return PlayersService.mapPlayerModelToDTO(player)
+      return PlayersService.mapPlayerModelToDTO(player);
     });
   }
 
@@ -29,16 +30,23 @@ export class PlayersService extends BaseService<PlayerModel> {
 
     try {
       await this._create(playerToCreate);
-      const player: PlayerModel = await this._findById(playerToCreate._id).populate('history.team');
+      const player: PlayerModel = await this._findById(
+        playerToCreate._id,
+      ).populate('history.team');
       return PlayersService.mapPlayerModelToDTO(player);
     } catch (e) {
       throw e;
     }
   }
 
-  public async update(id: string, updatePlayer: UpdatePlayerDto): Promise<PlayerDto> {
+  public async update(
+    id: string,
+    updatePlayer: UpdatePlayerDto,
+  ): Promise<PlayerDto> {
     await this._updateById(id, updatePlayer);
-    const player: PlayerModel = await this._findById(id).populate('history.team');
+    const player: PlayerModel = await this._findById(id).populate(
+      'history.team',
+    );
     return PlayersService.mapPlayerModelToDTO(player);
   }
 
@@ -54,10 +62,10 @@ export class PlayersService extends BaseService<PlayerModel> {
         return {
           team: (playerTeam.team as TeamModel).name,
           from: playerTeam.from,
-          to: playerTeam.to
-        }
-      })
-    }
+          to: playerTeam.to,
+        };
+      }),
+    };
   }
 
   public static generateUniqueID(player: CreatePlayerDto) {

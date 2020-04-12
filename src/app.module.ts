@@ -9,19 +9,19 @@ import { PlayersModule } from './players/players.module';
   imports: [
     ConfigModule.forRoot({
       load: [configuration],
-      envFilePath: '.dev.env'
+      envFilePath: '.dev.env',
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('DATABASE.CONNECTION_STRING'),
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
     TeamsModule,
-    PlayersModule
+    PlayersModule,
   ],
   controllers: [],
   providers: [],

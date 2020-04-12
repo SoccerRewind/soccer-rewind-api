@@ -8,12 +8,12 @@ import { MongoError } from 'mongodb';
 type QueryList<T extends BaseModel> = DocumentQuery<
   Array<DocumentType<T>>,
   DocumentType<T>
-  >;
+>;
 
 type QueryItem<T extends BaseModel> = DocumentQuery<
   DocumentType<T>,
   DocumentType<T>
-  >;
+>;
 
 export abstract class BaseService<T extends BaseModel> {
   protected model: ReturnModelType<AnyParamConstructor<T>>;
@@ -116,7 +116,10 @@ export abstract class BaseService<T extends BaseModel> {
     });
   }
 
-  public async _updateByIdAsync(id: string, item: Partial<T>): Promise<DocumentType<T>> {
+  public async _updateByIdAsync(
+    id: string,
+    item: Partial<T>,
+  ): Promise<DocumentType<T>> {
     try {
       return await this._updateById(id, item).exec();
     } catch (e) {

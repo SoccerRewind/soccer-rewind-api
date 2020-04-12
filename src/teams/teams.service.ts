@@ -11,8 +11,10 @@ import { PlayersService } from '../players/players.service';
 @Injectable()
 export class TeamsService extends BaseService<TeamModel> {
   constructor(
-    @InjectModel(TeamModel.modelName) private readonly teamModel: ReturnModelType<typeof TeamModel>,
-    @Inject(forwardRef(() => PlayersService)) private readonly playerService: PlayersService
+    @InjectModel(TeamModel.modelName)
+    private readonly teamModel: ReturnModelType<typeof TeamModel>,
+    @Inject(forwardRef(() => PlayersService))
+    private readonly playerService: PlayersService,
   ) {
     super(teamModel);
   }
@@ -24,7 +26,7 @@ export class TeamsService extends BaseService<TeamModel> {
 
   public async create(inputTeam: CreateTeamDto): Promise<TeamDto> {
     const newTeam = this._createModel(inputTeam);
-    newTeam._id = TeamsService.generateUniqueID(inputTeam);;
+    newTeam._id = TeamsService.generateUniqueID(inputTeam);
 
     try {
       await this._create(newTeam);
@@ -49,7 +51,10 @@ export class TeamsService extends BaseService<TeamModel> {
     const team: TeamModel = await this._findByIdAsync(id);
 
     await this._deleteById(id).then(async () => {
-      await this.playerService._update({ 'history.team': {$in: id} }, { $pull: { history: { team: id } } });
+      await this.playerService._update(
+        { 'history.team': { $in: id } },
+        { $pull: { history: { team: id } } },
+      );
     });
 
     return TeamsService.mapTeamModelToDTO(team);

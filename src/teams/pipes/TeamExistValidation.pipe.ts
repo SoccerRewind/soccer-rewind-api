@@ -1,9 +1,15 @@
-import { ArgumentMetadata, BadRequestException, Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
+import {
+  ArgumentMetadata,
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+  PipeTransform,
+} from '@nestjs/common';
 import { TeamsService } from '../teams.service';
 
 @Injectable()
 export class TeamExistValidationPipe implements PipeTransform {
-  constructor(private readonly teamService: TeamsService) { }
+  constructor(private readonly teamService: TeamsService) {}
 
   async transform(value: any, metadata: ArgumentMetadata): Promise<any> {
     if (metadata.type === 'param') {

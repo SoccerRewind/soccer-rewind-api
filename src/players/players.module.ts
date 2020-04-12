@@ -9,11 +9,19 @@ import { TeamModel } from '../teams/team.model';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: PlayerModel.modelName, schema: PlayerModel.schema, collection: 'players'},
-      { name: TeamModel.modelName, schema: TeamModel.schema, collection: 'teams' }
-    ])
+      {
+        name: PlayerModel.modelName,
+        schema: PlayerModel.schema,
+        collection: 'players',
+      },
+      {
+        name: TeamModel.modelName,
+        schema: TeamModel.schema,
+        collection: 'teams',
+      },
+    ]),
   ],
   controllers: [PlayersController],
-  providers: [PlayersService, TeamsService]
+  providers: [PlayersService, TeamsService],
 })
 export class PlayersModule {}

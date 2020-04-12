@@ -36,5 +36,5 @@ export class PlayerModel extends BaseModel {
   public country: string;
 
   @arrayProp({ _id: false, items: PlayerHistoryItemModel })
-  public history: PlayerHistoryItemModel[]
+  public history: PlayerHistoryItemModel[];
 }
