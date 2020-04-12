@@ -1,51 +1,42 @@
-import { forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { BaseService } from '../shared/base.service';
 import { PlayerHistoryItemModel, PlayerModel } from './player.model';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { PlayerDto } from './dto/player.dto';
-import { TeamsService } from '../teams/teams.service';
 import { TeamModel } from '../teams/team.model';
 import { UpdatePlayerDto } from './dto/update-player.dto';
 
 @Injectable()
 export class PlayersService extends BaseService<PlayerModel> {
   constructor(
-    @InjectModel(PlayerModel.modelName) private readonly playerModel: ReturnModelType<typeof PlayerModel>,
-    @Inject(forwardRef(() => TeamsService)) private readonly teamService: TeamsService
+    @InjectModel(PlayerModel.modelName) private readonly playerModel: ReturnModelType<typeof PlayerModel>
   ) {
     super(playerModel);
   }
 
   public async getAll(): Promise<PlayerDto[]> {
     const players = await this._findAll().populate('history.team');
-
     return players.map(player => {
       return PlayersService.mapPlayerModelToDTO(player)
     });
   }
 
   public async create(inputPlayer: CreatePlayerDto): Promise<PlayerDto> {
-    if (!inputPlayer.name) {
-      inputPlayer.name = `${inputPlayer.firstName} ${inputPlayer.lastName}`;
-    }
-
-    const newPlayer = this._createModel(inputPlayer);
-    newPlayer._id = PlayersService.generateUniqueID(inputPlayer);
+    const playerToCreate = this._createModel(inputPlayer);
+    playerToCreate._id = PlayersService.generateUniqueID(inputPlayer);
 
     try {
-      await this._create(newPlayer);
-      return PlayersService.mapPlayerModelToDTO(newPlayer);
+      await this._create(playerToCreate);
+      const player: PlayerModel = await this._findById(playerToCreate._id).populate('history.team');
+      return PlayersService.mapPlayerModelToDTO(player);
     } catch (e) {
       throw e;
     }
   }
 
   public async update(id: string, updatePlayer: UpdatePlayerDto): Promise<PlayerDto> {
-    if (!(await this._isExist(id))) {
-      throw new NotFoundException(`Player with id: ${id} does not exist`);
-    }
     await this._updateById(id, updatePlayer);
     const player: PlayerModel = await this._findById(id).populate('history.team');
     return PlayersService.mapPlayerModelToDTO(player);
@@ -69,7 +60,7 @@ export class PlayersService extends BaseService<PlayerModel> {
     }
   }
 
-  private static generateUniqueID(player: CreatePlayerDto) {
+  public static generateUniqueID(player: CreatePlayerDto) {
     return player.name.toLowerCase().replace(/ /g, '_');
   }
 }

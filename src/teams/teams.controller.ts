@@ -4,6 +4,7 @@ import { CreateTeamDto } from './dto/create-team.dto';
 import { TeamDto } from './dto/team.dto';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UpdateTeamDto } from './dto/update-team.dto';
+import { TeamExistValidationPipe } from './pipes/TeamExistValidation.pipe';
 
 @ApiTags('Teams')
 @Controller('teams')
@@ -27,7 +28,7 @@ export class TeamsController {
   @ApiNotFoundResponse({
     description: 'Team does not exist'
   })
-  public async getById(@Param('id') id: string): Promise<TeamDto> {
+  public async getById(@Param('id', TeamExistValidationPipe) id: string): Promise<TeamDto> {
     return this.teamService.getById(id);
   }
 
@@ -36,7 +37,7 @@ export class TeamsController {
     description: 'Team created successfully',
     type: TeamDto
   })
-  public async create(@Body() team: CreateTeamDto): Promise<TeamDto> {
+  public async create(@Body(TeamExistValidationPipe) team: CreateTeamDto): Promise<TeamDto> {
     return this.teamService.create(team);
   }
 
@@ -48,7 +49,7 @@ export class TeamsController {
   @ApiNotFoundResponse({
     description: 'Team does not exist'
   })
-  public async update(@Param('id') id: string, @Body() team: UpdateTeamDto): Promise<TeamDto> {
+  public async update(@Param('id', TeamExistValidationPipe) id: string, @Body() team: UpdateTeamDto): Promise<TeamDto> {
     return this.teamService.update(id, team)
   }
 
@@ -60,7 +61,7 @@ export class TeamsController {
   @ApiNotFoundResponse({
     description: 'Team does not exist'
   })
-  public async delete(@Param('id') id: string): Promise<TeamDto> {
+  public async delete(@Param('id', TeamExistValidationPipe) id: string): Promise<TeamDto> {
     return this.teamService.delete(id);
   }
 }

@@ -23,13 +23,8 @@ export class TeamsService extends BaseService<TeamModel> {
   }
 
   public async create(inputTeam: CreateTeamDto): Promise<TeamDto> {
-    const uniqueId = TeamsService.generateUniqueID(inputTeam);
-    if (await this._isExist(uniqueId)) {
-      throw new BadRequestException(`Team with id: ${uniqueId} is already exist`)
-    }
-
     const newTeam = this._createModel(inputTeam);
-    newTeam._id = uniqueId;
+    newTeam._id = TeamsService.generateUniqueID(inputTeam);;
 
     try {
       await this._create(newTeam);
@@ -41,28 +36,16 @@ export class TeamsService extends BaseService<TeamModel> {
 
   public async getById(id: string): Promise<TeamDto> {
     const team: TeamModel = await this._findByIdAsync(id);
-    if (team) {
-      return TeamsService.mapTeamModelToDTO(team);
-    } else {
-      throw new NotFoundException(`Team with id: ${id} does not exist`);
-    }
+    return TeamsService.mapTeamModelToDTO(team);
   }
 
   public async update(id: string, updateTeam: UpdateTeamDto): Promise<TeamDto> {
-    if (!(await this._isExist(id))) {
-      throw new NotFoundException(`Team with id: ${id} does not exist`);
-    }
-
     await this._updateByIdAsync(id, updateTeam);
     const team: TeamModel = await this._findByIdAsync(id);
     return TeamsService.mapTeamModelToDTO(team);
   }
 
   public async delete(id: string): Promise<TeamDto> {
-    if (!(await this._isExist(id))) {
-      throw new NotFoundException(`Team with id: ${id} does not exist`);
-    }
-
     const team: TeamModel = await this._findByIdAsync(id);
 
     await this._deleteById(id).then(async () => {
@@ -81,7 +64,7 @@ export class TeamsService extends BaseService<TeamModel> {
     };
   }
 
-  private static generateUniqueID(team: CreateTeamDto) {
+  public static generateUniqueID(team: CreateTeamDto) {
     return team.name.toLowerCase().replace(/ /g, '_');
   }
 }
