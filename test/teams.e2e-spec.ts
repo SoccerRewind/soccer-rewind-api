@@ -41,6 +41,10 @@ describe('Teams', () => {
     await app.init();
   });
 
+  afterAll(async () => {
+    await teamsUtils.DROP();
+  });
+
   it('should pass - create team', async () => {
     return teamsUtils.createTeam({
       "name": "team 1",
