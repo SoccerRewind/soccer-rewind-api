@@ -8,7 +8,11 @@ async function bootstrap() {
     logger: ['log', 'error', 'warn', 'debug', 'verbose']
   });
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true
+  }));
+
   const options = new DocumentBuilder()
     .setTitle('SoccerRewind')
     .setDescription('The SoccerRewind API description')
