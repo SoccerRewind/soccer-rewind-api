@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: soccer-rewind-db
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - 27017:27017
+    command: mongod
+volumes:
+  mongodb_data:

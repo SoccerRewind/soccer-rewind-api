@@ -1,18 +1,24 @@
 import { Module } from '@nestjs/common';
 import { TeamsModule } from './teams/teams.module';
 import configuration from './config/configuration';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlayersModule } from './players/players.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration]
+      load: [configuration],
+      envFilePath: '.dev.env'
     }),
-    MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('DATABASE.MONGODB') + configService.get<string>('DATABASE.NAME'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }),
+      inject: [ConfigService]
     }),
     TeamsModule,
     PlayersModule
