@@ -1,4 +1,4 @@
-import { IsArray, IsString } from 'class-validator';
+import { IsString, ValidateNested } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { PlayerHistoryItem } from './create-player.dto';
 
@@ -29,7 +29,7 @@ export class PlayerDto {
   @ApiProperty()
   public country: string;
 
-  @IsArray()
+  @ValidateNested()
   @ApiPropertyOptional()
   public history: PlayerHistoryItemDto[]
 }

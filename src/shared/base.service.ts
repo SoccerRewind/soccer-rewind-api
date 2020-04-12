@@ -98,6 +98,18 @@ export abstract class BaseService<T extends BaseModel> {
     }
   }
 
+  public async _deleteMany(filter = {}) {
+    return this.model.deleteMany(filter);
+  }
+
+  public async _deleteManyAsync(filter = {}) {
+    try {
+      return await this._deleteMany(filter);
+    } catch (e) {
+      BaseService.throwMongoError(e);
+    }
+  }
+
   public _updateById(id: string, item: Partial<T>): QueryItem<T> {
     return this.model.findByIdAndUpdate(id, item, {
       new: true,

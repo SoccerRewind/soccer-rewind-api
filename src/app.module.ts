@@ -14,7 +14,7 @@ import { PlayersModule } from './players/players.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('DATABASE.MONGODB') + configService.get<string>('DATABASE.NAME'),
+        uri: configService.get<string>('DATABASE.CONNECTION_STRING'),
         useNewUrlParser: true,
         useUnifiedTopology: true
       }),
