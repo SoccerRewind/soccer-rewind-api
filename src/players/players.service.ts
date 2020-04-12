@@ -1,6 +1,6 @@
 import { forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { BaseService } from '../shared/base.service';
-import { PlayerModel } from './player.model';
+import { PlayerHistoryItemModel, PlayerModel } from './player.model';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreatePlayerDto } from './dto/create-player.dto';
@@ -19,7 +19,7 @@ export class PlayersService extends BaseService<PlayerModel> {
   }
 
   public async getAll(): Promise<PlayerDto[]> {
-    const players = await this._findAll().populate('teams');
+    const players = await this._findAll().populate('history.team');
 
     return players.map(player => {
       return PlayersService.mapPlayerModelToDTO(player)
@@ -32,14 +32,6 @@ export class PlayersService extends BaseService<PlayerModel> {
     }
 
     const newPlayer = this._createModel(inputPlayer);
-    for (const teamId of inputPlayer.teamIds) {
-
-      const team = await this.teamService._findByIdAsync(teamId);
-      if (team) {
-        newPlayer.teams.push(team);
-      }
-    }
-
     newPlayer._id = PlayersService.generateUniqueID(inputPlayer);
 
     try {
@@ -55,7 +47,7 @@ export class PlayersService extends BaseService<PlayerModel> {
       throw new NotFoundException(`Player with id: ${id} does not exist`);
     }
     await this._updateById(id, updatePlayer);
-    const player: PlayerModel = await this._findById(id).populate('teams');
+    const player: PlayerModel = await this._findById(id).populate('history.team');
     return PlayersService.mapPlayerModelToDTO(player);
   }
 
@@ -67,10 +59,11 @@ export class PlayersService extends BaseService<PlayerModel> {
       name: player.name,
       country: player.country,
       face: player.face,
-      teams: (player.teams as TeamModel[]).map(team => {
+      history: (player.history as PlayerHistoryItemModel[]).map(playerTeam => {
         return {
-          id: team._id,
-          name: team.name
+          team: (playerTeam.team as TeamModel).name,
+          from: playerTeam.from,
+          to: playerTeam.to
         }
       })
     }

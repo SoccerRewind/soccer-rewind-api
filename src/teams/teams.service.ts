@@ -66,7 +66,7 @@ export class TeamsService extends BaseService<TeamModel> {
     const team: TeamModel = await this._findByIdAsync(id);
 
     await this._deleteById(id).then(async () => {
-      await this.playerService._update({ teams: {$in: id} }, { $pullAll: {teams: [id]} });
+      await this.playerService._update({ 'history.team': {$in: id} }, { $pull: { history: { team: id } } });
     });
 
     return TeamsService.mapTeamModelToDTO(team);

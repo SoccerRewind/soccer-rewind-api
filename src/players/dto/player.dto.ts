@@ -1,5 +1,8 @@
 import { IsArray, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { PlayerHistoryItem } from './create-player.dto';
+
+export class PlayerHistoryItemDto extends PlayerHistoryItem {}
 
 export class PlayerDto {
   @IsString()
@@ -28,5 +31,6 @@ export class PlayerDto {
 
   @IsArray()
   @ApiPropertyOptional()
-  public teams: any[]
+  public history: PlayerHistoryItemDto[]
 }
+
