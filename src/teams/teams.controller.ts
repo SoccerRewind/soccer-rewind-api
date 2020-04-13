@@ -18,6 +18,7 @@ import {
 } from '@nestjs/swagger';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { TeamExistValidationPipe } from './pipes/TeamExistValidation.pipe';
+import { Auth } from '../auth/auth.decorator';
 
 @ApiTags('Teams')
 @Controller('teams')
