@@ -1,11 +1,7 @@
-import { IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsOptional, IsString, IsUrl, Length } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
-export class PlayerDto {
-    @IsString()
-    @ApiProperty()
-    public id: string;
-
+export class CreatePlayerDto {
     @IsString()
     @ApiProperty()
     public firstName: string;
@@ -15,14 +11,16 @@ export class PlayerDto {
     public lastName: string;
 
     @IsString()
-    @ApiProperty()
+    @IsOptional()
+    @ApiPropertyOptional()
     public name: string;
 
-    @IsString()
+    @IsUrl()
     @ApiProperty()
     public faceImg: string;
 
     @IsString()
+    @Length(3, 3)
     @ApiProperty()
     public country: string;
 }

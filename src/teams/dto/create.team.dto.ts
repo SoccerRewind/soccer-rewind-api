@@ -1,11 +1,7 @@
-import { IsString } from 'class-validator';
+import { IsString, IsUrl, Length } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class TeamDto {
-    @IsString()
-    @ApiProperty()
-    public id: string;
-
+export class CreateTeamDto {
     @IsString()
     @ApiProperty()
     public name: string;
@@ -14,11 +10,12 @@ export class TeamDto {
     @ApiProperty()
     public shortName: string;
 
-    @IsString()
+    @IsUrl()
     @ApiProperty()
     public logoImg: string;
 
     @IsString()
+    @Length(3, 3)
     @ApiProperty()
     public country: string;
 }

@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "gen:doc": "npx compodoc -p tsconfig.json -s",
-    "mongodb:start": "docker-compose -f ./tools/mongodb/docker-compose.yml up",
+    "mongodb:start": "docker-compose -f ./tools/mongodb/docker-compose.yml up -d ",
     "mongodb:stop": "docker-compose -f ./tools/mongodb/docker-compose.yml down"
   },
   "dependencies": {

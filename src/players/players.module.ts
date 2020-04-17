@@ -7,21 +7,21 @@ import { TeamsService } from '../teams/teams.service';
 import { TeamModel } from '../teams/team.model';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      {
-        name: PlayerModel.modelName,
-        schema: PlayerModel.schema,
-        collection: 'players',
-      },
-      {
-        name: TeamModel.modelName,
-        schema: TeamModel.schema,
-        collection: 'teams',
-      },
-    ]),
-  ],
-  controllers: [PlayersController],
-  providers: [PlayersService, TeamsService],
+    imports: [
+        MongooseModule.forFeature([
+            {
+                name: PlayerModel.modelName,
+                schema: PlayerModel.schema,
+                collection: 'players',
+            },
+            {
+                name: TeamModel.modelName,
+                schema: TeamModel.schema,
+                collection: 'teams',
+            },
+        ]),
+    ],
+    controllers: [PlayersController],
+    providers: [PlayersService, TeamsService],
 })
 export class PlayersModule {}

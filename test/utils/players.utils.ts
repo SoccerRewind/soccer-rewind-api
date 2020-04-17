@@ -1,40 +1,40 @@
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { TeamsService } from '../../src/teams/teams.service';
+import { PlayersService } from '../../src/players/players.service';
 
-export class TeamsUtils {
-  private readonly PATH: string = '/teams';
+export class PlayersUtils {
+  private readonly PATH: string = '/players';
 
   constructor(
     private readonly app: INestApplication,
-    private readonly teamService: TeamsService,
+    private readonly playerService: PlayersService,
   ) {}
 
-  public createTeam(team: any) {
+  public createPlayer(player: any) {
     return request(this.app.getHttpServer())
       .post(this.PATH)
-      .send(team);
+      .send(player);
   }
 
-  public updateTeam(id: string, team: any) {
+  public updatePlayer(id: string, player: any) {
     return request(this.app.getHttpServer())
       .patch(`${this.PATH}/${id}`)
-      .send(team);
+      .send(player);
   }
 
-  public deleteTeam(id: string) {
+  public deletePlayer(id: string) {
     return request(this.app.getHttpServer()).delete(`${this.PATH}/${id}`);
   }
 
-  public getAllTeams() {
+  public getAllPlayers() {
     return request(this.app.getHttpServer()).get(this.PATH);
   }
 
-  public getTeam(id: string) {
+  public getPlayer(id: string) {
     return request(this.app.getHttpServer()).get(`${this.PATH}/${id}`);
   }
 
   public async DROP() {
-    await this.teamService._deleteManyAsync({});
+    await this.playerService._deleteManyAsync({});
   }
 }
