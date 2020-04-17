@@ -61,6 +61,7 @@ export class PlayerCareerService extends BaseService<PlayerCareerModel> {
         const player: PlayerDto = PlayersService.mapPlayerModelToDTO(playerCareer.playerId as PlayerModel);
 
         const teams: PlayerCareerItemDto[] = [];
+        // @TODO: what if team/player is null (deleted)?
         for (const careerItem of playerCareer.teams) {
             try {
                 const a = TeamsService.mapTeamModelToDTO(careerItem.teamId as TeamModel);

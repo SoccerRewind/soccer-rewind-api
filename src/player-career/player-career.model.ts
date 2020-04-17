@@ -5,7 +5,7 @@ import { Schema } from 'mongoose';
 import { PlayerModel } from '../players/player.model';
 
 export class PlayerCareerItem {
-    constructor(team: TeamModel, from: string, to: string) {
+    constructor(team: TeamModel, from: Date, to: Date) {
         this.teamId = team;
         this.from = from;
         this.to = to;
@@ -15,10 +15,10 @@ export class PlayerCareerItem {
     public teamId: Ref<TeamModel>;
 
     @prop({ required: true })
-    public from: string;
+    public from: Date;
 
     @prop({ required: true })
-    public to: string;
+    public to: Date;
 }
 
 export class PlayerCareerModel extends BaseModel {

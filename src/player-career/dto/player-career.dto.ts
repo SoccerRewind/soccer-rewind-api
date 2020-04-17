@@ -1,4 +1,4 @@
-import { IsString, ValidateNested } from 'class-validator';
+import { IsDate, IsDateString, IsString, ValidateNested } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { PlayerDto } from '../../players/dto/player.dto';
 import { TeamDto } from '../../teams/dto/team.dto';
@@ -8,13 +8,13 @@ export class PlayerCareerItemDto {
     @ApiProperty()
     public team: TeamDto;
 
-    @IsString()
+    @IsDateString()
     @ApiProperty()
-    public from: string;
+    public from: Date;
 
-    @IsString()
+    @IsDateString()
     @ApiProperty()
-    public to: string;
+    public to: Date;
 }
 
 export class PlayerCareerDto {

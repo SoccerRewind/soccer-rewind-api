@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PlayerModel } from './player.model';
 import { TeamsService } from '../teams/teams.service';
 import { TeamModel } from '../teams/team.model';
+import { PlayerCareerModel } from '../player-career/player-career.model';
+import { PlayerCareerService } from '../player-career/player-career.service';
 
 @Module({
     imports: [
@@ -19,9 +21,14 @@ import { TeamModel } from '../teams/team.model';
                 schema: TeamModel.schema,
                 collection: 'teams',
             },
+            {
+                name: PlayerCareerModel.modelName,
+                schema: PlayerCareerModel.schema,
+                collection: 'player-career',
+            },
         ]),
     ],
     controllers: [PlayersController],
-    providers: [PlayersService, TeamsService],
+    providers: [PlayersService, TeamsService, PlayerCareerService],
 })
 export class PlayersModule {}

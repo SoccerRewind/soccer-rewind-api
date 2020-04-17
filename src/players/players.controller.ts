@@ -7,6 +7,7 @@ import { UpdatePlayerDto } from './dto/update.player.dto';
 import { SetPlayerNamePipe } from './pipes/SetPlayerName.pipe';
 import { IsPlayerUniquePipe } from './pipes/IsPlayerUnique.pipe';
 import { IsPlayerExistPipe } from './pipes/IsPlayerExist.pipe';
+import { CanDeletePlayerPipe } from './pipes/CanDeletePlayer.pipe';
 
 @ApiTags('Players')
 @Controller('players')
@@ -69,7 +70,7 @@ export class PlayersController {
     @ApiNotFoundResponse({
         description: 'Player does not exist',
     })
-    public async delete(@Param('id', IsPlayerExistPipe) id: string): Promise<PlayerDto> {
+    public async delete(@Param('id', IsPlayerExistPipe, CanDeletePlayerPipe) id: string): Promise<PlayerDto> {
         return this.playerService.delete(id);
     }
 }

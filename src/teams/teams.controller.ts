@@ -6,6 +6,7 @@ import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from 
 import { UpdateTeamDto } from './dto/update.team.dto';
 import { IsTeamExistPipe } from './pipes/IsTeamExist.pipe';
 import { IsTeamUniquePipe } from './pipes/IsTeamUnique.pipe';
+import { CanDeleteTeamPipe } from './pipes/CanDeleteTeam.pipe';
 
 @ApiTags('Teams')
 @Controller('teams')
@@ -62,7 +63,7 @@ export class TeamsController {
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async delete(@Param('id', IsTeamExistPipe) id: string): Promise<TeamDto> {
+    public async delete(@Param('id', IsTeamExistPipe, CanDeleteTeamPipe) id: string): Promise<TeamDto> {
         return this.teamService.delete(id);
     }
 }
