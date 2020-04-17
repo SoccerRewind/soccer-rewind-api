@@ -1,5 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
-import { PlayersService } from '../players.service';
+import { BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 import { PlayerCareerService } from '../../player-career/player-career.service';
 import { PlayerCareerModel } from '../../player-career/player-career.model';
 
