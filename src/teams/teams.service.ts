@@ -1,69 +1,50 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
-import { TeamModel } from './team.model';
-import { InjectModel } from '@nestjs/mongoose';
-import { ReturnModelType } from '@typegoose/typegoose';
-import { CreateTeamDto } from './dto/create.team.dto';
-import { TeamDto } from './dto/team.dto';
-import { BaseService } from '../shared/base.service';
-import { UpdateTeamDto } from './dto/update.team.dto';
-import { PlayersService } from '../players/players.service';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TeamEntity } from './team.entity';
+import { Repository } from 'typeorm';
+import { CreateTeamDto, TeamDto, UpdateTeamDto } from './dto/team.dto';
+import { SuccessResponse } from '../shared/success.response';
 
 @Injectable()
-export class TeamsService extends BaseService<TeamModel> {
+export class TeamsService {
     constructor(
-        @InjectModel(TeamModel.modelName)
-        private readonly teamModel: ReturnModelType<typeof TeamModel>,
-        @Inject(forwardRef(() => PlayersService))
-        private readonly playerService: PlayersService,
-    ) {
-        super(teamModel);
-    }
+        @InjectRepository(TeamEntity)
+        private teamRepository: Repository<TeamEntity>,
+    ) {}
 
-    public async getAll(): Promise<any[]> {
-        const teams: TeamModel[] = await this._findAllAsync();
-        return teams.map(team => TeamsService.mapTeamModelToDTO(team));
+    public async getAll(): Promise<TeamDto[]> {
+        return this.teamRepository.find().then(teams => teams.map(e => TeamDto.fromEntity(e)));
     }
 
     public async create(inputTeam: CreateTeamDto): Promise<TeamDto> {
-        const newTeam = this._createModel(inputTeam);
-        newTeam._id = TeamsService.generateUniqueID(inputTeam);
-
-        try {
-            await this._create(newTeam);
-            return TeamsService.mapTeamModelToDTO(newTeam);
-        } catch (e) {
-            throw e;
-        }
+        return this.teamRepository.save(inputTeam).then(e => TeamDto.fromEntity(e));
     }
 
     public async getById(id: string): Promise<TeamDto> {
-        const team: TeamModel = await this._findByIdAsync(id);
-        return TeamsService.mapTeamModelToDTO(team);
+        return this.teamRepository
+            .createQueryBuilder()
+            .whereInIds(id)
+            .getOne()
+            .then(e => TeamDto.fromEntity(e))
     }
 
-    public async update(id: string, updateTeam: UpdateTeamDto): Promise<TeamDto> {
-        await this._updateByIdAsync(id, updateTeam);
-        const team: TeamModel = await this._findByIdAsync(id);
-        return TeamsService.mapTeamModelToDTO(team);
+    public async update(id: string, updateTeam: UpdateTeamDto): Promise<any> {
+        await this.teamRepository
+            .createQueryBuilder()
+            .update()
+            .set(updateTeam)
+            .whereInIds(id)
+            .execute()
+        return this.getById(id)
+
     }
 
-    public async delete(id: string): Promise<TeamDto> {
-        const team: TeamModel = await this._findByIdAsync(id);
-        await this._deleteByIdAsync(id);
-        return TeamsService.mapTeamModelToDTO(team);
-    }
-
-    public static mapTeamModelToDTO(team: TeamModel): TeamDto {
-        return {
-            id: team._id,
-            name: team.name,
-            shortName: team.shortName,
-            logoImg: team.logoImg,
-            country: team.country,
-        };
-    }
-
-    public static generateUniqueID(team: CreateTeamDto) {
-        return team.name.toLowerCase().replace(/ /g, '_');
+    public async delete(id: string): Promise<any> {
+        await this.teamRepository
+            .createQueryBuilder()
+            .softDelete()
+            .whereInIds(id)
+            .execute();
+        return new SuccessResponse(`Team with id: ${id} deleted successfully`)
     }
 }
