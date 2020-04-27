@@ -25,7 +25,7 @@ export class TeamsService {
             .createQueryBuilder()
             .whereInIds(id)
             .getOne()
-            .then(e => TeamDto.fromEntity(e))
+            .then(e => TeamDto.fromEntity(e));
     }
 
     public async update(id: number, updateTeam: UpdateTeamDto): Promise<any> {
@@ -34,17 +34,16 @@ export class TeamsService {
             .update()
             .set(updateTeam)
             .whereInIds(id)
-            .execute()
-        return this.getById(id)
-
+            .execute();
+        return this.getById(id);
     }
 
-    public async delete(id: number): Promise<any> {
+    public async delete(id: number): Promise<SuccessResponse> {
         await this.teamRepository
             .createQueryBuilder()
             .softDelete()
             .whereInIds(id)
             .execute();
-        return new SuccessResponse(`Team with id: ${id} deleted successfully`)
+        return new SuccessResponse(`Team with id: ${id} deleted successfully`);
     }
 }
