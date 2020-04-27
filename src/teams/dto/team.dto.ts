@@ -1,26 +1,21 @@
 import { IsString } from 'class-validator';
-import { ApiProperty, OmitType, PartialType } from '@nestjs/swagger';
+import { OmitType, PartialType } from '@nestjs/swagger';
 import { TeamEntity } from '../team.entity';
 
 export class TeamDto {
     @IsString()
-    @ApiProperty()
     public id: number;
 
     @IsString()
-    @ApiProperty()
     public name: string;
 
     @IsString()
-    @ApiProperty()
     public shortName: string;
 
     @IsString()
-    @ApiProperty()
     public logoImg: string;
 
     @IsString()
-    @ApiProperty()
     public country: string;
 
     public static fromEntity(team: TeamEntity): TeamDto {

@@ -24,12 +24,12 @@
     "mongodb:stop": "docker-compose -f ./tools/mongodb/docker-compose.yml down"
   },
   "dependencies": {
-    "@nestjs/common": "^7.0.0",
+    "@nestjs/common": "^7.0.9",
     "@nestjs/config": "^0.4.0",
-    "@nestjs/core": "^7.0.0",
+    "@nestjs/core": "^7.0.9",
     "@nestjs/mongoose": "^6.4.0",
-    "@nestjs/platform-express": "^7.0.0",
-    "@nestjs/swagger": "^4.5.1",
+    "@nestjs/platform-express": "^7.0.9",
+    "@nestjs/swagger": "^4.5.3",
     "@nestjs/typeorm": "^7.0.0",
     "@typegoose/typegoose": "^6.4.0",
     "class-transformer": "^0.2.3",
