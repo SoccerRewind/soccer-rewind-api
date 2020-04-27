@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { PlayersService } from './players.service';
+import { PlayerService } from './player.service';
 import { CreatePlayerDto, PlayerDto, UpdatePlayerDto } from './dto/player.dto';
 import { IsPlayerExistPipe } from './pipes/IsPlayerExist.pipe';
 import { SuccessResponse } from '../shared/success.response';
@@ -8,8 +8,8 @@ import { SetPlayerNamePipe } from './pipes/SetPlayerName.pipe';
 
 @ApiTags('Players')
 @Controller('players')
-export class PlayersController {
-    constructor(private playerService: PlayersService) {}
+export class PlayerController {
+    constructor(private playerService: PlayerService) {}
 
     @Get()
     @ApiOkResponse({

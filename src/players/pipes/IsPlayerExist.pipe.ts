@@ -1,14 +1,9 @@
 import { Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { PlayerEntity } from '../player.entity';
-import { Repository } from 'typeorm';
+import { PlayerRepository } from '../player.repository';
 
 @Injectable()
 export class IsPlayerExistPipe implements PipeTransform {
-    constructor(
-        @InjectRepository(PlayerEntity)
-        private playerRepository: Repository<PlayerEntity>,
-    ) {}
+    constructor(private playerRepository: PlayerRepository) {}
 
     async transform(id: number): Promise<number> {
         if ((await this.playerRepository.count({ id: id })) === 0) {

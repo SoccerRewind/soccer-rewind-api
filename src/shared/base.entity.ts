@@ -12,5 +12,5 @@ export abstract class Base {
     public updatedAt: Date;
 
     @DeleteDateColumn()
-    public deletedAt: Date
+    public deletedAt: Date;
 }

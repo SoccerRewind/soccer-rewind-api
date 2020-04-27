@@ -1,15 +1,12 @@
 import { Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { TeamEntity } from '../team.entity';
-import { Repository } from 'typeorm';
+import { TeamRepository } from '../team.repository';
 
 @Injectable()
 export class IsTeamExistPipe implements PipeTransform {
-    constructor(@InjectRepository(TeamEntity)
-                private teamRepository: Repository<TeamEntity>) {}
+    constructor(private teamRepository: TeamRepository) {}
 
     async transform(id: number): Promise<any> {
-        if (await this.teamRepository.count({id: id}) === 0) {
+        if ((await this.teamRepository.count({ id: id })) === 0) {
             throw new NotFoundException(`Team with id: ${id} does not exist`);
         }
 

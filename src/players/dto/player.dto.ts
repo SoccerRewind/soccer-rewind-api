@@ -1,24 +1,30 @@
 import { IsOptional, IsString } from 'class-validator';
-import { OmitType, PartialType } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional, OmitType, PartialType } from '@nestjs/swagger';
 import { PlayerEntity } from '../player.entity';
 
 export class PlayerDto {
     @IsString()
+    @ApiProperty()
     public id: number;
 
     @IsString()
+    @ApiProperty()
     public firstName: string;
 
     @IsString()
+    @ApiProperty()
     public lastName: string;
 
     @IsString()
+    @ApiProperty()
     public name: string;
 
     @IsString()
+    @ApiProperty()
     public faceImg: string;
 
     @IsString()
+    @ApiProperty()
     public country: string;
 
     public static fromEntity(player: PlayerEntity): PlayerDto {
@@ -36,6 +42,7 @@ export class PlayerDto {
 export class CreatePlayerDto extends OmitType(PlayerDto, ['id', 'name']) {
     @IsString()
     @IsOptional()
+    @ApiPropertyOptional()
     public name?: string;
 }
 

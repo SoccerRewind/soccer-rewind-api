@@ -5,8 +5,8 @@
 // import { InjectModel } from '@nestjs/mongoose';
 // import { PlayerModel } from '../players/player.model';
 // import { ReturnModelType } from '@typegoose/typegoose';
-// import { PlayersService } from '../players/players.service';
-// import { TeamsService } from '../teams/teams.service';
+// import { PlayerService } from '../players/players.service';
+// import { TeamService } from '../teams/teams.service';
 // import { TeamModel } from '../teams/team.model';
 // import { PlayerCareerDto, PlayerCareerItemDto } from './dto/player-career.dto';
 // import { PlayerDto } from '../players/dto/player.dto';
@@ -16,8 +16,8 @@
 //     constructor(
 //         @InjectModel(PlayerCareerModel.modelName)
 //         private readonly playerCareerModel: ReturnModelType<typeof PlayerCareerModel>,
-//         private readonly playerService: PlayersService,
-//         private readonly teamService: TeamsService,
+//         private readonly playerService: PlayerService,
+//         private readonly teamService: TeamService,
 //     ) {
 //         super(playerCareerModel);
 //     }
@@ -58,13 +58,13 @@
 //     }
 //
 //     private static mapPlayerCareerModelToDTO(playerCareer: PlayerCareerModel): PlayerCareerDto {
-//         const player: PlayerDto = PlayersService.mapPlayerModelToDTO(playerCareer.playerId as PlayerModel);
+//         const player: PlayerDto = PlayerService.mapPlayerModelToDTO(playerCareer.playerId as PlayerModel);
 //
 //         const teams: PlayerCareerItemDto[] = [];
 //         // @TODO: what if team/player is null (deleted)?
 //         for (const careerItem of playerCareer.teams) {
 //             try {
-//                 const a = TeamsService.mapTeamModelToDTO(careerItem.teamId as TeamModel);
+//                 const a = TeamService.mapTeamModelToDTO(careerItem.teamId as TeamModel);
 //                 teams.push({
 //                     team: a,
 //                     from: careerItem.from,

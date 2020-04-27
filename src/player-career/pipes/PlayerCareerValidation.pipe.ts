@@ -1,11 +1,11 @@
 // import { BadRequestException, Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
-// import { PlayersService } from '../../players/players.service';
+// import { PlayerService } from '../../players/players.service';
 // import { CreatePlayerCareerDto } from '../dto/create.player-career.dto';
-// import { TeamsService } from '../../teams/teams.service';
+// import { TeamService } from '../../teams/teams.service';
 //
 // @Injectable()
 // export class PlayerCareerUpdateValidationPipe implements PipeTransform {
-//     constructor(private readonly playerService: PlayersService, private readonly teamService: TeamsService) {}
+//     constructor(private readonly playerService: PlayerService, private readonly teamService: TeamService) {}
 //
 //     async transform(data: CreatePlayerCareerDto): Promise<any> {
 //         if (!(await this.playerService._isExist(data.playerId))) {

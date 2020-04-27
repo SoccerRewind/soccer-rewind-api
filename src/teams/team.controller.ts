@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { TeamsService } from './teams.service';
+import { TeamService } from './team.service';
 import { CreateTeamDto, TeamDto, UpdateTeamDto } from './dto/team.dto';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { IsTeamExistPipe } from './pipes/IsTeamExist.pipe';
@@ -7,8 +7,8 @@ import { SuccessResponse } from '../shared/success.response';
 
 @ApiTags('Teams')
 @Controller('teams')
-export class TeamsController {
-    constructor(private teamService: TeamsService) {}
+export class TeamController {
+    constructor(private teamService: TeamService) {}
 
     @Get()
     @ApiOkResponse({

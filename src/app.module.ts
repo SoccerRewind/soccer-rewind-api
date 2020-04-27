@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { TeamsModule } from './teams/teams.module';
+import { TeamModule } from './teams/team.module';
 import configuration from './config/configuration';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PlayersModule } from './players/players.module';
+import { PlayerModule } from './players/player.module';
 
 @Module({
     imports: [
@@ -18,8 +18,8 @@ import { PlayersModule } from './players/players.module';
             autoLoadEntities: true,
             synchronize: true,
         }),
-        TeamsModule,
-        PlayersModule,
+        TeamModule,
+        PlayerModule,
     ],
     controllers: [],
     providers: [],
