@@ -27,7 +27,7 @@ export class TeamsController {
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async getById(@Param('id', IsTeamExistPipe) id: string): Promise<TeamDto> {
+    public async getById(@Param('id', IsTeamExistPipe) id: number): Promise<TeamDto> {
         return this.teamService.getById(id);
     }
 
@@ -48,7 +48,7 @@ export class TeamsController {
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async update(@Param('id', IsTeamExistPipe) id: string, @Body() team: UpdateTeamDto): Promise<TeamDto> {
+    public async update(@Param('id', IsTeamExistPipe) id: number, @Body() team: UpdateTeamDto): Promise<TeamDto> {
         return this.teamService.update(id, team);
     }
 
@@ -59,7 +59,7 @@ export class TeamsController {
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async delete(@Param('id', IsTeamExistPipe) id: string): Promise<SuccessResponse> {
+    public async delete(@Param('id', IsTeamExistPipe) id: number): Promise<SuccessResponse> {
         return this.teamService.delete(id);
     }
 }

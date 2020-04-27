@@ -20,7 +20,7 @@ export class TeamsService {
         return this.teamRepository.save(inputTeam).then(e => TeamDto.fromEntity(e));
     }
 
-    public async getById(id: string): Promise<TeamDto> {
+    public async getById(id: number): Promise<TeamDto> {
         return this.teamRepository
             .createQueryBuilder()
             .whereInIds(id)
@@ -28,7 +28,7 @@ export class TeamsService {
             .then(e => TeamDto.fromEntity(e))
     }
 
-    public async update(id: string, updateTeam: UpdateTeamDto): Promise<any> {
+    public async update(id: number, updateTeam: UpdateTeamDto): Promise<any> {
         await this.teamRepository
             .createQueryBuilder()
             .update()
@@ -39,7 +39,7 @@ export class TeamsService {
 
     }
 
-    public async delete(id: string): Promise<any> {
+    public async delete(id: number): Promise<any> {
         await this.teamRepository
             .createQueryBuilder()
             .softDelete()
