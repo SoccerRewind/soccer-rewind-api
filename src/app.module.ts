@@ -4,6 +4,7 @@ import configuration from './config/configuration';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PlayerModule } from './players/player.module';
+import { PlayerCareerModule } from './player-career/player-career.module';
 
 @Module({
     imports: [
@@ -20,6 +21,7 @@ import { PlayerModule } from './players/player.module';
         }),
         TeamModule,
         PlayerModule,
+        PlayerCareerModule,
     ],
     controllers: [],
     providers: [],

@@ -1,7 +1,5 @@
-import { BaseRepository } from '../shared/base.repository';
 import { PlayerEntity } from './player.entity';
-import { CreatePlayerDto, UpdatePlayerDto } from './dto/player.dto';
-import { EntityRepository } from 'typeorm';
+import { EntityRepository, Repository } from 'typeorm';
 
 @EntityRepository(PlayerEntity)
-export class PlayerRepository extends BaseRepository<PlayerEntity, CreatePlayerDto, UpdatePlayerDto> {}
+export class PlayerRepository extends Repository<PlayerEntity> {}
