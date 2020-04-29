@@ -2,6 +2,7 @@ import { IsDateString, ValidateNested } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { PlayerDto } from '../../players/dto/player.dto';
 import { TeamDto } from '../../teams/dto/team.dto';
+import { PlayerCareerEntity } from '../player-career.entity';
 
 export class PlayerCareerItemDto {
     @ValidateNested()
@@ -10,11 +11,11 @@ export class PlayerCareerItemDto {
 
     @IsDateString()
     @ApiProperty()
-    public from: Date;
+    public dateFrom: Date;
 
     @IsDateString()
     @ApiProperty()
-    public to: Date;
+    public dateTo: Date;
 }
 
 export class PlayerCareerDto {
@@ -25,4 +26,30 @@ export class PlayerCareerDto {
     @ValidateNested()
     @ApiProperty()
     public teams: PlayerCareerItemDto[];
+
+    public static fromEntity(entity: PlayerCareerEntity): PlayerCareerDto {
+        const dto = new PlayerCareerDto();
+        dto.player = PlayerDto.fromEntity(entity.player);
+        dto.teams = [
+            {
+                team: TeamDto.fromEntity(entity.team),
+                dateFrom: entity.dateFrom,
+                dateTo: entity.dateTo,
+            },
+        ];
+        return dto;
+    }
+
+    public static fromEntities(entities: PlayerCareerEntity[]): PlayerCareerDto {
+        const dto = new PlayerCareerDto();
+        dto.player = PlayerDto.fromEntity(entities[0].player);
+        dto.teams = entities.map(entity => {
+            return {
+                team: TeamDto.fromEntity(entity.team),
+                dateFrom: entity.dateFrom,
+                dateTo: entity.dateTo,
+            };
+        });
+        return dto;
+    }
 }

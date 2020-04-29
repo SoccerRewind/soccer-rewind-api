@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException, PipeTransform } from '@nestjs/common';
-import { PlayersService } from '../players.service';
+import { PlayerRepository } from '../player.repository';
 
 @Injectable()
 export class IsPlayerExistPipe implements PipeTransform {
-    constructor(private readonly playerService: PlayersService) {}
+    constructor(private playerRepository: PlayerRepository) {}
 
-    async transform(id: string): Promise<any> {
-        if (!(await this.playerService._isExist(id))) {
+    async transform(id: number): Promise<number> {
+        if ((await this.playerRepository.count({ id: id })) === 0) {
             throw new NotFoundException(`Player with id: ${id} does not exist`);
         }
 

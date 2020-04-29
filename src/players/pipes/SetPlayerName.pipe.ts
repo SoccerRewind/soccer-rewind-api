@@ -1,5 +1,5 @@
 import { Injectable, PipeTransform } from '@nestjs/common';
-import { CreatePlayerDto } from '../dto/create.player.dto';
+import { CreatePlayerDto } from '../dto/player.dto';
 
 @Injectable()
 export class SetPlayerNamePipe implements PipeTransform {

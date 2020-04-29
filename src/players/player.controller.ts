@@ -1,18 +1,15 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { PlayersService } from './players.service';
-import { CreatePlayerDto } from './dto/create.player.dto';
-import { PlayerDto } from './dto/player.dto';
-import { UpdatePlayerDto } from './dto/update.player.dto';
-import { SetPlayerNamePipe } from './pipes/SetPlayerName.pipe';
-import { IsPlayerUniquePipe } from './pipes/IsPlayerUnique.pipe';
+import { PlayerService } from './player.service';
+import { CreatePlayerDto, PlayerDto, UpdatePlayerDto } from './dto/player.dto';
 import { IsPlayerExistPipe } from './pipes/IsPlayerExist.pipe';
-import { CanDeletePlayerPipe } from './pipes/CanDeletePlayer.pipe';
+import { SuccessResponse } from '../shared/success.response';
+import { SetPlayerNamePipe } from './pipes/SetPlayerName.pipe';
 
 @ApiTags('Players')
 @Controller('players')
-export class PlayersController {
-    constructor(private playerService: PlayersService) {}
+export class PlayerController {
+    constructor(private playerService: PlayerService) {}
 
     @Get()
     @ApiOkResponse({
@@ -31,7 +28,7 @@ export class PlayersController {
     @ApiNotFoundResponse({
         description: 'Player does not exist',
     })
-    public async getById(@Param('id', IsPlayerExistPipe) id: string): Promise<PlayerDto> {
+    public async getById(@Param('id', IsPlayerExistPipe) id: number): Promise<PlayerDto> {
         return this.playerService.getById(id);
     }
 
@@ -41,7 +38,7 @@ export class PlayersController {
         type: PlayerDto,
     })
     public async create(
-        @Body(SetPlayerNamePipe, IsPlayerUniquePipe)
+        @Body(SetPlayerNamePipe)
         player: CreatePlayerDto,
     ): Promise<PlayerDto> {
         return this.playerService.create(player);
@@ -56,7 +53,7 @@ export class PlayersController {
         description: 'Player does not exist',
     })
     public async update(
-        @Param('id', IsPlayerExistPipe) id: string,
+        @Param('id', IsPlayerExistPipe) id: number,
         @Body() player: UpdatePlayerDto,
     ): Promise<PlayerDto> {
         return this.playerService.update(id, player);
@@ -70,7 +67,7 @@ export class PlayersController {
     @ApiNotFoundResponse({
         description: 'Player does not exist',
     })
-    public async delete(@Param('id', IsPlayerExistPipe, CanDeletePlayerPipe) id: string): Promise<PlayerDto> {
+    public async delete(@Param('id', IsPlayerExistPipe) id: number): Promise<SuccessResponse> {
         return this.playerService.delete(id);
     }
 }

@@ -1,17 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { TeamsService } from './teams.service';
-import { CreateTeamDto } from './dto/create.team.dto';
-import { TeamDto } from './dto/team.dto';
+import { TeamService } from './team.service';
+import { CreateTeamDto, TeamDto, UpdateTeamDto } from './dto/team.dto';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { UpdateTeamDto } from './dto/update.team.dto';
 import { IsTeamExistPipe } from './pipes/IsTeamExist.pipe';
-import { IsTeamUniquePipe } from './pipes/IsTeamUnique.pipe';
-import { CanDeleteTeamPipe } from './pipes/CanDeleteTeam.pipe';
+import { SuccessResponse } from '../shared/success.response';
 
 @ApiTags('Teams')
 @Controller('teams')
-export class TeamsController {
-    constructor(private teamService: TeamsService) {}
+export class TeamController {
+    constructor(private teamService: TeamService) {}
 
     @Get()
     @ApiOkResponse({
@@ -30,7 +27,7 @@ export class TeamsController {
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async getById(@Param('id', IsTeamExistPipe) id: string): Promise<TeamDto> {
+    public async getById(@Param('id', IsTeamExistPipe) id: number): Promise<TeamDto> {
         return this.teamService.getById(id);
     }
 
@@ -39,7 +36,7 @@ export class TeamsController {
         description: 'Team created successfully',
         type: TeamDto,
     })
-    public async create(@Body(IsTeamUniquePipe) team: CreateTeamDto): Promise<TeamDto> {
+    public async create(@Body() team: CreateTeamDto): Promise<TeamDto> {
         return this.teamService.create(team);
     }
 
@@ -51,19 +48,18 @@ export class TeamsController {
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async update(@Param('id', IsTeamExistPipe) id: string, @Body() team: UpdateTeamDto): Promise<TeamDto> {
+    public async update(@Param('id', IsTeamExistPipe) id: number, @Body() team: UpdateTeamDto): Promise<TeamDto> {
         return this.teamService.update(id, team);
     }
 
     @Delete(':id')
     @ApiOkResponse({
-        description: 'Return deleted team',
-        type: TeamDto,
+        type: SuccessResponse,
     })
     @ApiNotFoundResponse({
         description: 'Team does not exist',
     })
-    public async delete(@Param('id', IsTeamExistPipe, CanDeleteTeamPipe) id: string): Promise<TeamDto> {
+    public async delete(@Param('id', IsTeamExistPipe) id: number): Promise<SuccessResponse> {
         return this.teamService.delete(id);
     }
 }

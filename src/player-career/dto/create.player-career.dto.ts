@@ -1,28 +1,42 @@
-import { IsDateString, IsString, ValidateNested } from 'class-validator';
+import { IsDateString, IsNumber, ValidateNested } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
+import { PlayerCareerEntity } from '../player-career.entity';
 
 export class CreatePlayerCareerItemDto {
-    @IsString()
+    @IsNumber()
     @ApiProperty()
-    public teamId: string;
+    public teamId: number;
 
     @IsDateString()
     @ApiProperty()
-    public from: Date;
+    public dateFrom: Date;
 
     @IsDateString()
     @ApiProperty()
-    public to: Date;
+    public dateTo: Date;
 }
 
 export class CreatePlayerCareerDto {
-    @IsString()
+    @IsNumber()
     @ApiProperty()
-    public playerId: string;
+    public playerId: number;
 
     @ValidateNested()
     @ApiProperty()
     @Type(() => CreatePlayerCareerItemDto)
     public career: CreatePlayerCareerItemDto[];
+
+    public toEntities(): PlayerCareerEntity[] {
+        const entities: PlayerCareerEntity[] = [];
+        for (const item of this.career) {
+            const entity = new PlayerCareerEntity();
+            entity.playerId = this.playerId;
+            entity.teamId = item.teamId;
+            entity.dateFrom = item.dateFrom;
+            entity.dateTo = item.dateTo;
+            entities.push(entity);
+        }
+        return entities;
+    }
 }

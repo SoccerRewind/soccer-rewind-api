@@ -1,82 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePlayerCareerDto, CreatePlayerCareerItemDto } from './dto/create.player-career.dto';
-import { BaseService } from '../shared/base.service';
-import { PlayerCareerItem, PlayerCareerModel } from './player-career.model';
-import { InjectModel } from '@nestjs/mongoose';
-import { PlayerModel } from '../players/player.model';
-import { ReturnModelType } from '@typegoose/typegoose';
-import { PlayersService } from '../players/players.service';
-import { TeamsService } from '../teams/teams.service';
-import { TeamModel } from '../teams/team.model';
-import { PlayerCareerDto, PlayerCareerItemDto } from './dto/player-career.dto';
-import { PlayerDto } from '../players/dto/player.dto';
+import { CreatePlayerCareerDto } from './dto/create.player-career.dto';
+import { PlayerCareerRepository } from './player-career.repository';
+import { PlayerCareerEntity } from './player-career.entity';
+import { PlayerCareerDto } from './dto/player-career.dto';
+import { SuccessResponse } from '../shared/success.response';
 
 @Injectable()
-export class PlayerCareerService extends BaseService<PlayerCareerModel> {
-    constructor(
-        @InjectModel(PlayerCareerModel.modelName)
-        private readonly playerCareerModel: ReturnModelType<typeof PlayerCareerModel>,
-        private readonly playerService: PlayersService,
-        private readonly teamService: TeamsService,
-    ) {
-        super(playerCareerModel);
+export class PlayerCareerService {
+    constructor(private playerCareerRepository: PlayerCareerRepository) {}
+
+    public async createPlayerCareer(playerCareer: CreatePlayerCareerDto): Promise<PlayerCareerDto> {
+        await this.playerCareerRepository.save(playerCareer.toEntities());
+        const entities: PlayerCareerEntity[] = await this.playerCareerRepository.findForPlayer(playerCareer.playerId);
+        return PlayerCareerDto.fromEntities(entities);
     }
 
-    public async getAllPlayerCareer() {
-        const careers = await this._findAll()
-            .populate('playerId')
-            .populate('teams.teamId');
-        return careers.map(i => PlayerCareerService.mapPlayerCareerModelToDTO(i));
+    public async getForPlayer(playerId: number): Promise<PlayerCareerDto> {
+        const entities: PlayerCareerEntity[] = await this.playerCareerRepository.findForPlayer(playerId);
+        return PlayerCareerDto.fromEntities(entities);
     }
 
-    public async getPlayerCareer(id: string) {
-        return this._findByIdAsync(id);
-    }
-
-    public async createPlayerCareer(playerCareer: CreatePlayerCareerDto) {
-        const newPlayerCareer = this._createModel(playerCareer);
-
-        newPlayerCareer.playerId = await this.playerService._findByIdAsync(playerCareer.playerId);
-        newPlayerCareer.teams = await this.createCareerItems(playerCareer.career);
-        newPlayerCareer._id = playerCareer.playerId;
-
-        try {
-            await this._create(newPlayerCareer);
-        } catch (e) {
-            throw e;
-        }
-    }
-
-    private async createCareerItems(careerItems: CreatePlayerCareerItemDto[]): Promise<PlayerCareerItem[]> {
-        const items: PlayerCareerItem[] = [];
-        for (const item of careerItems) {
-            const team: TeamModel = await this.teamService._findByIdAsync(item.teamId);
-            const careerItem: PlayerCareerItem = new PlayerCareerItem(team, item.from, item.to);
-            items.push(careerItem);
-        }
-        return items;
-    }
-
-    private static mapPlayerCareerModelToDTO(playerCareer: PlayerCareerModel): PlayerCareerDto {
-        const player: PlayerDto = PlayersService.mapPlayerModelToDTO(playerCareer.playerId as PlayerModel);
-
-        const teams: PlayerCareerItemDto[] = [];
-        // @TODO: what if team/player is null (deleted)?
-        for (const careerItem of playerCareer.teams) {
-            try {
-                const a = TeamsService.mapTeamModelToDTO(careerItem.teamId as TeamModel);
-                teams.push({
-                    team: a,
-                    from: careerItem.from,
-                    to: careerItem.to,
-                } as PlayerCareerItemDto);
-            } catch (e) {
-                console.error(e);
-            }
-        }
-        return {
-            player: player,
-            teams: teams,
-        } as PlayerCareerDto;
+    public async deleteForPlayer(playerId: number): Promise<SuccessResponse> {
+        await this.playerCareerRepository.delete({ playerId });
+        return new SuccessResponse(`Player career for player with id: ${playerId} deleted successfully`);
     }
 }

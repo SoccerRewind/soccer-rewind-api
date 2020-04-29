@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { TeamsModule } from './teams/teams.module';
+import { TeamModule } from './teams/team.module';
 import configuration from './config/configuration';
 import { ConfigModule } from '@nestjs/config';
-import { PlayersModule } from './players/players.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PlayerModule } from './players/player.module';
 import { PlayerCareerModule } from './player-career/player-career.module';
-import { DatabaseModule } from './database/database.module';
 
 @Module({
     imports: [
@@ -12,9 +12,15 @@ import { DatabaseModule } from './database/database.module';
             load: [configuration],
             envFilePath: '.dev.env',
         }),
-        DatabaseModule,
-        TeamsModule,
-        PlayersModule,
+        TypeOrmModule.forRoot({
+            type: 'sqlite',
+            logging: true,
+            database: './db.sqlite',
+            autoLoadEntities: true,
+            synchronize: true,
+        }),
+        TeamModule,
+        PlayerModule,
         PlayerCareerModule,
     ],
     controllers: [],

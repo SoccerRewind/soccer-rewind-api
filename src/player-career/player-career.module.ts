@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PlayerCareerEntity } from './player-career.entity';
+import { PlayerCareerRepository } from './player-career.repository';
 import { PlayerCareerService } from './player-career.service';
 import { PlayerCareerController } from './player-career.controller';
-import { PlayersService } from '../players/players.service';
-import { TeamsService } from '../teams/teams.service';
-import { DatabaseModule } from '../database/database.module';
 
 @Module({
-    imports: [DatabaseModule],
-    providers: [PlayerCareerService, PlayersService, TeamsService],
+    imports: [TypeOrmModule.forFeature([PlayerCareerEntity, PlayerCareerRepository])],
+    providers: [PlayerCareerService],
     controllers: [PlayerCareerController],
 })
 export class PlayerCareerModule {}
