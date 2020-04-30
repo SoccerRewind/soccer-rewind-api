@@ -10,4 +10,11 @@ export class PlayerCareerRepository extends Repository<PlayerCareerEntity> {
             .leftJoinAndSelect('PlayerCareer.team', 'team')
             .getMany();
     }
+
+    public async isExist(playerId: number): Promise<boolean> {
+        const n: number = await this.createQueryBuilder()
+            .where({ playerId: playerId })
+            .getCount();
+        return n > 0;
+    }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PlayerService } from './player.service';
 import { CreatePlayerDto, PlayerDto, UpdatePlayerDto } from './dto/player.dto';
@@ -28,7 +28,7 @@ export class PlayerController {
     @ApiNotFoundResponse({
         description: 'Player does not exist',
     })
-    public async getById(@Param('id', IsPlayerExistPipe) id: number): Promise<PlayerDto> {
+    public async getById(@Param('id', ParseIntPipe, IsPlayerExistPipe) id: number): Promise<PlayerDto> {
         return this.playerService.getById(id);
     }
 
@@ -53,7 +53,7 @@ export class PlayerController {
         description: 'Player does not exist',
     })
     public async update(
-        @Param('id', IsPlayerExistPipe) id: number,
+        @Param('id', ParseIntPipe, IsPlayerExistPipe) id: number,
         @Body() player: UpdatePlayerDto,
     ): Promise<PlayerDto> {
         return this.playerService.update(id, player);
@@ -67,7 +67,7 @@ export class PlayerController {
     @ApiNotFoundResponse({
         description: 'Player does not exist',
     })
-    public async delete(@Param('id', IsPlayerExistPipe) id: number): Promise<SuccessResponse> {
+    public async delete(@Param('id', ParseIntPipe, IsPlayerExistPipe) id: number): Promise<SuccessResponse> {
         return this.playerService.delete(id);
     }
 }
