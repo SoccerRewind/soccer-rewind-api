@@ -3,6 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { PlayerDto } from '../../players/dto/player.dto';
 import { TeamDto } from '../../teams/dto/team.dto';
 import { PlayerCareerEntity } from '../player-career.entity';
+import { Type } from 'class-transformer';
 
 export class PlayerCareerItemDto {
     @ValidateNested()
@@ -24,7 +25,10 @@ export class PlayerCareerDto {
     public player: PlayerDto;
 
     @ValidateNested()
-    @ApiProperty()
+    @Type(() => PlayerCareerItemDto)
+    @ApiProperty({
+        type: [PlayerCareerItemDto],
+    })
     public teams: PlayerCareerItemDto[];
 
     public static fromEntity(entity: PlayerCareerEntity): PlayerCareerDto {

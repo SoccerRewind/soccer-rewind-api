@@ -23,7 +23,9 @@ export class CreatePlayerCareerDto {
     public playerId: number;
 
     @ValidateNested()
-    @ApiProperty()
+    @ApiProperty({
+        type: [CreatePlayerCareerItemDto],
+    })
     @Type(() => CreatePlayerCareerItemDto)
     public career: CreatePlayerCareerItemDto[];
 
